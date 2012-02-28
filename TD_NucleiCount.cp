@@ -15,7 +15,7 @@ LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_
     Specify metadata fields to group by:
     Select subfolders to analyze:
     Image count:1
-    Text that these images have in common (case-sensitive):ch02.tif
+    Text that these images have in common (case-sensitive):ch03.tif
     Position of this image in each group:d0.tif
     Extract metadata from where?:None
     Regular expression that finds metadata in the file name:None
@@ -35,7 +35,7 @@ LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_
 IdentifyPrimaryObjects:[module_num:2|svn_version:\'10826\'|variable_revision_number:8|show_window:True|notes:\x5B\'Identify the nuclei from the nuclear stain image. Some manual adjustment of the smoothing filter size and maxima supression distance is required to optimize segmentation.\'\x5D]
     Select the input image:DAPI
     Name the primary objects to be identified:Nuclei
-    Typical diameter of objects, in pixel units (Min,Max):4,20
+    Typical diameter of objects, in pixel units (Min,Max):6,20
     Discard objects outside the diameter range?:Yes
     Try to merge too small objects with nearby larger objects?:No
     Discard objects touching the border of the image?:Yes
@@ -83,7 +83,27 @@ OverlayOutlines:[module_num:5|svn_version:\'10672\'|variable_revision_number:2|s
     Select method to determine brightness of outlines:Max of image
     Width of outlines:1
 
-SaveImages:[module_num:6|svn_version:\'10822\'|variable_revision_number:7|show_window:True|notes:\x5B"Save the overlay image as an 8-bit TIF, appending the text \'outline\' to the original filename of the nuclei image."\x5D]
+DisplayHistogram:[module_num:6|svn_version:\'10300\'|variable_revision_number:3|show_window:True|notes:\x5B\x5D]
+    Select the object whose measurements will be displayed:Nuclei
+    Select the object measurement to plot:Number_Object_Number
+    Number of bins:100
+    Transform the data prior to plotting along the X-axis?:no
+    How should the Y-axis be scaled?:linear
+    Enter a title for the plot, if desired:
+    Specify min/max bounds for the x-axis?:No
+    Minimum/maximum values for the x-axis:0.000000,1.000000
+
+DisplayHistogram:[module_num:7|svn_version:\'10300\'|variable_revision_number:3|show_window:True|notes:\x5B\x5D]
+    Select the object whose measurements will be displayed:Nuclei
+    Select the object measurement to plot:Location_Center_X
+    Number of bins:100
+    Transform the data prior to plotting along the X-axis?:no
+    How should the Y-axis be scaled?:linear
+    Enter a title for the plot, if desired:
+    Specify min/max bounds for the x-axis?:No
+    Minimum/maximum values for the x-axis:0.000000,1.000000
+
+SaveImages:[module_num:8|svn_version:\'10822\'|variable_revision_number:7|show_window:True|notes:\x5B"Save the overlay image as an 8-bit TIF, appending the text \'outline\' to the original filename of the nuclei image."\x5D]
     Select the type of image to save:Image
     Select the image to save:OutlinedNuc
     Select the objects to save:None
@@ -104,7 +124,7 @@ SaveImages:[module_num:6|svn_version:\'10822\'|variable_revision_number:7|show_w
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:No
 
-ExportToSpreadsheet:[module_num:7|svn_version:\'10880\'|variable_revision_number:7|show_window:True|notes:\x5B"Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv\'s."\x5D]
+ExportToSpreadsheet:[module_num:9|svn_version:\'10880\'|variable_revision_number:7|show_window:True|notes:\x5B"Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv\'s."\x5D]
     Select or enter the column delimiter:Comma (",")
     Prepend the output file name to the data file names?:Yes
     Add image metadata columns to your object data file?:No
