@@ -15,7 +15,7 @@ LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_
     Specify metadata fields to group by:
     Select subfolders to analyze:
     Image count:1
-    Text that these images have in common (case-sensitive):4-4
+    Text that these images have in common (case-sensitive):DAPI
     Position of this image in each group:d0.tif
     Extract metadata from where?:None
     Regular expression that finds metadata in the file name:None
@@ -41,7 +41,7 @@ IdentifyPrimaryObjects:[module_num:2|svn_version:\'10826\'|variable_revision_num
     Discard objects touching the border of the image?:Yes
     Select the thresholding method:MoG Global
     Threshold correction factor:1
-    Lower and upper bounds on threshold:0,1
+    Lower and upper bounds on threshold:0.008,1.0
     Approximate fraction of image covered by objects?:0.1
     Method to distinguish clumped objects:Intensity
     Method to draw dividing lines between clumped objects:Intensity
@@ -71,21 +71,17 @@ MeasureObjectIntensity:[module_num:3|svn_version:\'10816\'|variable_revision_num
     Select an image to measure:DAPI
     Select objects to measure:Nuclei
 
-MeasureObjectSizeShape:[module_num:4|svn_version:\'1\'|variable_revision_number:1|show_window:True|notes:\x5B\'Measure morphological features from the cell, nuclei and cytoplasm objects.\'\x5D]
-    Select objects to measure:Nuclei
-    Calculate the Zernike features?:No
-
-OverlayOutlines:[module_num:5|svn_version:\'10672\'|variable_revision_number:2|show_window:True|notes:\x5B\'Overlay the nucleus outlines on the cropped nuclear image.\'\x5D]
+OverlayOutlines:[module_num:4|svn_version:\'10672\'|variable_revision_number:2|show_window:True|notes:\x5B\'Overlay the nucleus outlines on the cropped nuclear image.\'\x5D]
     Display outlines on a blank image?:No
     Select image on which to display outlines:DAPI
     Name the output image:OutlinedNuc
     Select outline display mode:Color
     Select method to determine brightness of outlines:Max of image
-    Width of outlines:1
+    Width of outlines:2
 
-SaveImages:[module_num:6|svn_version:\'10822\'|variable_revision_number:7|show_window:True|notes:\x5B"Save the overlay image as an 8-bit TIF, appending the text \'outline\' to the original filename of the nuclei image."\x5D]
+SaveImages:[module_num:5|svn_version:\'10822\'|variable_revision_number:7|show_window:True|notes:\x5B"Save the overlay image as an 8-bit TIF, appending the text \'outline\' to the original filename of the nuclei image."\x5D]
     Select the type of image to save:Image
-    Select the image to save:OutlinedNuc
+    Select the image to save:NucOutlines
     Select the objects to save:None
     Select the module display window to save:OutlinedNuc
     Select method for constructing file names:From image filename
@@ -104,7 +100,7 @@ SaveImages:[module_num:6|svn_version:\'10822\'|variable_revision_number:7|show_w
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:No
 
-ExportToSpreadsheet:[module_num:7|svn_version:\'10880\'|variable_revision_number:7|show_window:True|notes:\x5B"Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv\'s."\x5D]
+ExportToSpreadsheet:[module_num:6|svn_version:\'10880\'|variable_revision_number:7|show_window:True|notes:\x5B"Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv\'s."\x5D]
     Select or enter the column delimiter:Comma (",")
     Prepend the output file name to the data file names?:Yes
     Add image metadata columns to your object data file?:No
@@ -123,7 +119,7 @@ ExportToSpreadsheet:[module_num:7|svn_version:\'10880\'|variable_revision_number
     Data to export:Image
     Combine these object measurements with those of the previous object?:No
     File name:Image.csv
-    Use the object name for the file name?:No
+    Use the object name for the file name?:Yes
     Data to export:Nuclei
     Combine these object measurements with those of the previous object?:No
     File name:Nuclei.csv
