@@ -41,7 +41,7 @@ IdentifyPrimaryObjects:[module_num:2|svn_version:\'10826\'|variable_revision_num
     Discard objects touching the border of the image?:Yes
     Select the thresholding method:MoG Global
     Threshold correction factor:1
-    Lower and upper bounds on threshold:0.008,1.0
+    Lower and upper bounds on threshold:0.009,1.0
     Approximate fraction of image covered by objects?:0.1
     Method to distinguish clumped objects:Intensity
     Method to draw dividing lines between clumped objects:Intensity
