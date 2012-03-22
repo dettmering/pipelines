@@ -72,7 +72,7 @@ IdentifyPrimaryObjects:[module_num:4|svn_version:\'10826\'|variable_revision_num
     Discard objects touching the border of the image?:Yes
     Select the thresholding method:MoG Global
     Threshold correction factor:1
-    Lower and upper bounds on threshold:0.009,1.0
+    Lower and upper bounds on threshold:0.008,1.0
     Approximate fraction of image covered by objects?:0.1
     Method to distinguish clumped objects:Intensity
     Method to draw dividing lines between clumped objects:Intensity
@@ -131,7 +131,7 @@ SaveImages:[module_num:7|svn_version:\'10822\'|variable_revision_number:7|show_w
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:No
 
-ExportToSpreadsheet:[module_num:8|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B"Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv\'s."\x5D]
+ExportToSpreadsheet:[module_num:8|svn_version:\'10880\'|variable_revision_number:7|show_window:True|notes:\x5B"Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv\'s."\x5D]
     Select or enter the column delimiter:Comma (",")
     Prepend the output file name to the data file names?:Yes
     Add image metadata columns to your object data file?:No
