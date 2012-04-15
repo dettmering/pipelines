@@ -193,14 +193,14 @@ IdentifyPrimaryObjects:[module_num:8|svn_version:\'10826\'|variable_revision_num
 
 IdentifySecondaryObjects:[module_num:9|svn_version:\'10826\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the input objects:Nuclei
-    Name the objects to be identified:Cells_Green
-    Select the method to identify the secondary objects:Distance - B
+    Name the objects to be identified:Cells_GreenRaw
+    Select the method to identify the secondary objects:Distance - N
     Select the input image:CorrGreen
-    Select the thresholding method:Otsu PerObject
+    Select the thresholding method:Manual
     Threshold correction factor:1
     Lower and upper bounds on threshold:0.000000,1.000000
     Approximate fraction of image covered by objects?:0.01
-    Number of pixels by which to expand the primary objects:6
+    Number of pixels by which to expand the primary objects:1
     Regularization factor:0.05
     Name the outline image:Cells_GreenOutlines
     Manual threshold:0.0
@@ -243,7 +243,16 @@ IdentifySecondaryObjects:[module_num:10|svn_version:\'10826\'|variable_revision_
     Select the measurement to threshold with:None
     Fill holes in identified objects?:Yes
 
-MeasureImageIntensity:[module_num:11|svn_version:\'10816\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+ExpandOrShrinkObjects:[module_num:11|svn_version:\'10830\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
+    Select the input objects:Cells_GreenRaw
+    Name the output objects:Cells_Green
+    Select the operation:Shrink objects by a specified number of pixels
+    Number of pixels by which to expand or shrink:2
+    Fill holes in objects so that all objects shrink to a single point?:No
+    Retain the outlines of the identified objects for use later in the pipeline (for example, in SaveImages)?:No
+    Name the outline image:ShrunkenNucleiOutlines
+
+MeasureImageIntensity:[module_num:12|svn_version:\'10816\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Select the image to measure:CorrGreen
     Measure the intensity only from areas enclosed by objects?:Yes
     Select the input objects:Cells_Green
@@ -251,13 +260,13 @@ MeasureImageIntensity:[module_num:11|svn_version:\'10816\'|variable_revision_num
     Measure the intensity only from areas enclosed by objects?:Yes
     Select the input objects:Cells_Red
 
-CalculateMath:[module_num:12|svn_version:\'10905\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
+CalculateMath:[module_num:13|svn_version:\'10905\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
     Name the output measurement:Math_Green
     Operation:None
     Select the numerator measurement type:Image
     Select the numerator objects:None
     Select the numerator measurement:Intensity_MedianIntensity_CorrGreen_Cells_Green
-    Multiply the above operand by:4
+    Multiply the above operand by:2
     Raise the power of above operand by:1
     Select the second operand measurement type:Image
     Select the second operand objects:None
@@ -268,13 +277,13 @@ CalculateMath:[module_num:12|svn_version:\'10905\'|variable_revision_number:1|sh
     Multiply the result by:1
     Raise the power of result by:1
 
-CalculateMath:[module_num:13|svn_version:\'10905\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
+CalculateMath:[module_num:14|svn_version:\'10905\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
     Name the output measurement:Math_Red
     Operation:None
     Select the numerator measurement type:Image
     Select the numerator objects:None
     Select the numerator measurement:Intensity_MedianIntensity_CorrRed_Cells_Red
-    Multiply the above operand by:4
+    Multiply the above operand by:7
     Raise the power of above operand by:1
     Select the second operand measurement type:Image
     Select the second operand objects:None
@@ -285,7 +294,7 @@ CalculateMath:[module_num:13|svn_version:\'10905\'|variable_revision_number:1|sh
     Multiply the result by:1
     Raise the power of result by:1
 
-ApplyThreshold:[module_num:14|svn_version:\'6746\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
+ApplyThreshold:[module_num:15|svn_version:\'6746\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
     Select the input image:CorrGreen
     Name the output image:ThreshGreen
     Select the output image type:Grayscale
@@ -303,7 +312,7 @@ ApplyThreshold:[module_num:14|svn_version:\'6746\'|variable_revision_number:5|sh
     Assign pixels in the middle intensity class to the foreground or the background?:Foreground
     Select the measurement to threshold with:Math_Math_Green
 
-ApplyThreshold:[module_num:15|svn_version:\'6746\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
+ApplyThreshold:[module_num:16|svn_version:\'6746\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
     Select the input image:CorrRed
     Name the output image:ThreshRed
     Select the output image type:Grayscale
@@ -321,22 +330,22 @@ ApplyThreshold:[module_num:15|svn_version:\'6746\'|variable_revision_number:5|sh
     Assign pixels in the middle intensity class to the foreground or the background?:Foreground
     Select the measurement to threshold with:Math_Math_Red
 
-MeasureObjectSizeShape:[module_num:16|svn_version:\'1\'|variable_revision_number:1|show_window:True|notes:\x5B\x5D]
+MeasureObjectSizeShape:[module_num:17|svn_version:\'1\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
     Select objects to measure:Cells_Green
     Select objects to measure:Cells_Red
     Calculate the Zernike features?:No
 
-MeasureObjectIntensity:[module_num:17|svn_version:\'10816\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
+MeasureObjectIntensity:[module_num:18|svn_version:\'10816\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
     Hidden:1
     Select an image to measure:ThreshGreen
     Select objects to measure:Cells_Green
 
-MeasureObjectIntensity:[module_num:18|svn_version:\'10816\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
+MeasureObjectIntensity:[module_num:19|svn_version:\'10816\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
     Hidden:1
     Select an image to measure:ThreshRed
     Select objects to measure:Cells_Red
 
-ConserveMemory:[module_num:19|svn_version:\'9401\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
+ConserveMemory:[module_num:20|svn_version:\'9401\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
     Specify which images?:Images to remove
     Select image to remove:IllumBlue
     Select image to remove:IllumGreen
@@ -345,7 +354,7 @@ ConserveMemory:[module_num:19|svn_version:\'9401\'|variable_revision_number:1|sh
     Select image to remove:CorrGreen
     Select image to remove:CorrRed
 
-FilterObjects:[module_num:20|svn_version:\'10300\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
+FilterObjects:[module_num:21|svn_version:\'10300\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
     Name the output objects:FilteredGreen
     Select the object to filter:Cells_Green
     Filter using classifier rules or measurements?:Measurements
@@ -355,20 +364,15 @@ FilterObjects:[module_num:20|svn_version:\'10300\'|variable_revision_number:5|sh
     Name the outline image:FilteredGreenObjects
     Rules file location:Default Input Folder\x7CNone
     Rules file name:rules.txt
-    Measurement count:2
+    Measurement count:1
     Additional object count:0
     Select the measurement to filter by:Intensity_MeanIntensity_ThreshGreen
     Filter using a minimum measurement value?:Yes
     Minimum value:0.0001
     Filter using a maximum measurement value?:No
     Maximum value:1
-    Select the measurement to filter by:AreaShape_Area
-    Filter using a minimum measurement value?:Yes
-    Minimum value:10
-    Filter using a maximum measurement value?:No
-    Maximum value:1
 
-FilterObjects:[module_num:21|svn_version:\'10300\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
+FilterObjects:[module_num:22|svn_version:\'10300\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
     Name the output objects:FilteredRed
     Select the object to filter:Cells_Red
     Filter using classifier rules or measurements?:Measurements
@@ -391,7 +395,7 @@ FilterObjects:[module_num:21|svn_version:\'10300\'|variable_revision_number:5|sh
     Filter using a maximum measurement value?:No
     Maximum value:1
 
-RelateObjects:[module_num:22|svn_version:\'10300\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+RelateObjects:[module_num:23|svn_version:\'10300\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Select the input child objects:FilteredRed
     Select the input parent objects:FilteredGreen
     Calculate distances?:None
@@ -399,7 +403,7 @@ RelateObjects:[module_num:22|svn_version:\'10300\'|variable_revision_number:2|sh
     Calculate distances to other parents?:No
     Parent name:None
 
-FilterObjects:[module_num:23|svn_version:\'10300\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
+FilterObjects:[module_num:24|svn_version:\'10300\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
     Name the output objects:FilteredGreenRedDouble
     Select the object to filter:FilteredGreen
     Filter using classifier rules or measurements?:Measurements
@@ -417,7 +421,7 @@ FilterObjects:[module_num:23|svn_version:\'10300\'|variable_revision_number:5|sh
     Filter using a maximum measurement value?:No
     Maximum value:1
 
-RescaleIntensity:[module_num:24|svn_version:\'6746\'|variable_revision_number:2|show_window:False|notes:\x5B\'Rescales 4096 to 65536 grey values for export (x16)\'\x5D]
+RescaleIntensity:[module_num:25|svn_version:\'6746\'|variable_revision_number:2|show_window:False|notes:\x5B\'Rescales 4096 to 65536 grey values for export (x16)\'\x5D]
     Select the input image:DAPI
     Name the output image:RescaledBlue
     Select rescaling method:Choose specific values to be reset to a custom range
@@ -435,7 +439,7 @@ RescaleIntensity:[module_num:24|svn_version:\'6746\'|variable_revision_number:2|
     Enter the divisor:1
     Select the measurement to use as a divisor:None
 
-RescaleIntensity:[module_num:25|svn_version:\'6746\'|variable_revision_number:2|show_window:False|notes:\x5B\'Rescales 4096 to 65536 grey values for export (x16)\'\x5D]
+RescaleIntensity:[module_num:26|svn_version:\'6746\'|variable_revision_number:2|show_window:False|notes:\x5B\'Rescales 4096 to 65536 grey values for export (x16)\'\x5D]
     Select the input image:FITC
     Name the output image:RescaledGreen
     Select rescaling method:Choose specific values to be reset to a custom range
@@ -453,7 +457,7 @@ RescaleIntensity:[module_num:25|svn_version:\'6746\'|variable_revision_number:2|
     Enter the divisor:1
     Select the measurement to use as a divisor:None
 
-RescaleIntensity:[module_num:26|svn_version:\'6746\'|variable_revision_number:2|show_window:False|notes:\x5B\'Rescales 4096 to 65536 grey values for export (x16)\'\x5D]
+RescaleIntensity:[module_num:27|svn_version:\'6746\'|variable_revision_number:2|show_window:False|notes:\x5B\'Rescales 4096 to 65536 grey values for export (x16)\'\x5D]
     Select the input image:PI
     Name the output image:RescaledRed
     Select rescaling method:Choose specific values to be reset to a custom range
@@ -471,7 +475,7 @@ RescaleIntensity:[module_num:26|svn_version:\'6746\'|variable_revision_number:2|
     Enter the divisor:1
     Select the measurement to use as a divisor:None
 
-GrayToColor:[module_num:27|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+GrayToColor:[module_num:28|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Select a color scheme:RGB
     Select the input image to be colored red:RescaledRed
     Select the input image to be colored green:RescaledGreen
@@ -490,7 +494,7 @@ GrayToColor:[module_num:27|svn_version:\'10341\'|variable_revision_number:2|show
     Relative weight for the brightness image:1
     Select the input image to add to the stacked image:None
 
-OverlayOutlines:[module_num:28|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+OverlayOutlines:[module_num:29|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Display outlines on a blank image?:No
     Select image on which to display outlines:ColorImage
     Name the output image:OrigOverlay
@@ -504,7 +508,7 @@ OverlayOutlines:[module_num:28|svn_version:\'10672\'|variable_revision_number:2|
     Select outlines to display:NucOutlines
     Select outline color:Blue
 
-OverlayOutlines:[module_num:29|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+OverlayOutlines:[module_num:30|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Display outlines on a blank image?:No
     Select image on which to display outlines:ColorImage
     Name the output image:OrigOverlaySecObjects
@@ -516,7 +520,7 @@ OverlayOutlines:[module_num:29|svn_version:\'10672\'|variable_revision_number:2|
     Select outlines to display:Cells_RedOutlines
     Select outline color:Red
 
-SaveImages:[module_num:30|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+SaveImages:[module_num:31|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the type of image to save:Image
     Select the image to save:ColorImage
     Select the objects to save:None
@@ -537,7 +541,7 @@ SaveImages:[module_num:30|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:No
 
-SaveImages:[module_num:31|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+SaveImages:[module_num:32|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the type of image to save:Image
     Select the image to save:OrigOverlay
     Select the objects to save:None
@@ -558,7 +562,7 @@ SaveImages:[module_num:31|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:No
 
-SaveImages:[module_num:32|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+SaveImages:[module_num:33|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the type of image to save:Image
     Select the image to save:OrigOverlaySecObjects
     Select the objects to save:None
@@ -579,7 +583,7 @@ SaveImages:[module_num:32|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:Yes
 
-ExportToSpreadsheet:[module_num:33|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B"Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv\'s."\x5D]
+ExportToSpreadsheet:[module_num:34|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B"Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv\'s."\x5D]
     Select or enter the column delimiter:,
     Prepend the output file name to the data file names?:Yes
     Add image metadata columns to your object data file?:No
