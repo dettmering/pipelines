@@ -1,0 +1,3 @@
+TD_NucleiCount_20xEpi.cp				http://tinyurl.com/cp-nuclei
+TD_IdentifyMacrophages.cp				http://tinyurl.com/cp-macroph
+TD_IdentifyMacrophages_PrimaryOtsuAdaptive_sigmamu.cp	http://tinyurl.com/cp-sigmamu
