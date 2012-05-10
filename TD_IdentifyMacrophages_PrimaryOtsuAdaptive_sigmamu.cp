@@ -504,19 +504,7 @@ OverlayOutlines:[module_num:28|svn_version:\'10672\'|variable_revision_number:2|
     Select outlines to display:NucOutlines
     Select outline color:Blue
 
-OverlayOutlines:[module_num:29|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
-    Display outlines on a blank image?:No
-    Select image on which to display outlines:ColorImage
-    Name the output image:OrigOverlaySecObjects
-    Select outline display mode:Color
-    Select method to determine brightness of outlines:Max of image
-    Width of outlines:1
-    Select outlines to display:Cells_GreenOutlines
-    Select outline color:Green
-    Select outlines to display:Cells_RedOutlines
-    Select outline color:Red
-
-SaveImages:[module_num:30|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+SaveImages:[module_num:29|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the type of image to save:Image
     Select the image to save:ColorImage
     Select the objects to save:None
@@ -537,7 +525,7 @@ SaveImages:[module_num:30|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:Yes
 
-SaveImages:[module_num:31|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+SaveImages:[module_num:30|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the type of image to save:Image
     Select the image to save:OrigOverlay
     Select the objects to save:None
@@ -558,28 +546,7 @@ SaveImages:[module_num:31|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:Yes
 
-SaveImages:[module_num:32|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
-    Select the type of image to save:Image
-    Select the image to save:OrigOverlaySecObjects
-    Select the objects to save:None
-    Select the module display window to save:None
-    Select method for constructing file names:From image filename
-    Select image name for file prefix:DAPI
-    Enter single file name:OrigBlue
-    Do you want to add a suffix to the image file name?:Yes
-    Text to append to the image name:_OutlinedOrig
-    Select file format to use:jpg
-    Output file location:Default Output Folder sub-folder\x7C\\g<Date>
-    Image bit depth:8
-    Overwrite existing files without warning?:Yes
-    Select how often to save:Every cycle
-    Rescale the images? :No
-    Save as grayscale or color image?:Grayscale
-    Select colormap:gray
-    Store file and path information to the saved image?:No
-    Create subfolders in the output folder?:Yes
-
-ExportToSpreadsheet:[module_num:33|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B"Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv\'s."\x5D]
+ExportToSpreadsheet:[module_num:31|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B"Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv\'s."\x5D]
     Select or enter the column delimiter:,
     Prepend the output file name to the data file names?:Yes
     Add image metadata columns to your object data file?:No
