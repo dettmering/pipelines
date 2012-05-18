@@ -17,8 +17,8 @@ LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_
     Image count:3
     Text that these images have in common (case-sensitive):3.tif
     Position of this image in each group:d0.tif
-    Extract metadata from where?:Path
-    Regular expression that finds metadata in the file name:None
+    Extract metadata from where?:Both
+    Regular expression that finds metadata in the file name:^(?P<Slice>.\\d*\\w)
     Type the regular expression that finds metadata in the subfolder path:.*\x5B\\\\/\x5D(?P<Date>.*)\x5B\\\\/\x5D(?P<Run>.*)$
     Channel count:1
     Group the movie frames?:No
@@ -549,7 +549,7 @@ SaveImages:[module_num:30|svn_version:\'10822\'|variable_revision_number:7|show_
 ExportToSpreadsheet:[module_num:31|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B"Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv\'s."\x5D]
     Select or enter the column delimiter:,
     Prepend the output file name to the data file names?:Yes
-    Add image metadata columns to your object data file?:No
+    Add image metadata columns to your object data file?:Yes
     Limit output to a size that is allowed in Excel?:No
     Select the columns of measurements to export?:No
     Calculate the per-image mean values for object measurements?:No
