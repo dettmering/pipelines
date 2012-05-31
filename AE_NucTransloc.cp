@@ -15,7 +15,7 @@ LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_
     Specify metadata fields to group by:
     Select subfolders to analyze:
     Image count:2
-    Text that these images have in common (case-sensitive):Channel 1
+    Text that these images have in common (case-sensitive):_0001.tif
     Position of this image in each group:Channel 1
     Extract metadata from where?:None
     Regular expression that finds metadata in the file name:None
@@ -31,7 +31,7 @@ LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_
     Name the outline image:NucleiOutlines
     Channel number:1
     Rescale intensities?:Yes
-    Text that these images have in common (case-sensitive):Channel 2
+    Text that these images have in common (case-sensitive):_0003.tif
     Position of this image in each group:Channel 2
     Extract metadata from where?:None
     Regular expression that finds metadata in the file name:None
