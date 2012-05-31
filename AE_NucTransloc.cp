@@ -156,7 +156,7 @@ CalculateMath:[module_num:7|svn_version:\'10905\'|variable_revision_number:1|sho
     Multiply the result by:1
     Raise the power of result by:1
 
-CalculateMath:[module_num:8|svn_version:\'10905\'|variable_revision_number:1|show_window:True|notes:\x5B\'Calculate the cytoplasm-to-nucleus ratio of the mean protein intensity.\'\x5D]
+CalculateMath:[module_num:8|svn_version:\'10905\'|variable_revision_number:1|show_window:False|notes:\x5B\'Calculate the cytoplasm-to-nucleus ratio of the mean protein intensity.\'\x5D]
     Name the output measurement:Ratio3
     Operation:Divide
     Select the numerator measurement type:Object
