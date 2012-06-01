@@ -72,8 +72,26 @@ ConserveMemory:[module_num:5|svn_version:\'9401\'|variable_revision_number:1|sho
     Select image to remove:OrigBlue
     Select image to remove:OrigRed
 
-ApplyThreshold:[module_num:6|svn_version:\'6746\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
-    Select the input image:OrigGreen
+ImageMath:[module_num:6|svn_version:\'10718\'|variable_revision_number:3|show_window:True|notes:\x5B\x5D]
+    Operation:Invert
+    Raise the power of the result by:1
+    Multiply the result by:1
+    Add to result:0
+    Set values less than 0 equal to 0?:Yes
+    Set values greater than 1 equal to 1?:Yes
+    Ignore the image masks?:No
+    Name the output image:Inverted
+    Image or measurement?:Image
+    Select the first image:OrigGreen
+    Multiply the first image by:1
+    Measurement:
+    Image or measurement?:Image
+    Select the second image:
+    Multiply the second image by:1
+    Measurement:
+
+ApplyThreshold:[module_num:7|svn_version:\'6746\'|variable_revision_number:5|show_window:True|notes:\x5B\x5D]
+    Select the input image:Inverted
     Name the output image:ThreshGreen
     Select the output image type:Binary (black and white)
     Set pixels below or above the threshold to zero?:Below threshold
@@ -90,7 +108,7 @@ ApplyThreshold:[module_num:6|svn_version:\'6746\'|variable_revision_number:5|sho
     Assign pixels in the middle intensity class to the foreground or the background?:Foreground
     Select the measurement to threshold with:None
 
-MeasureImageAreaOccupied:[module_num:7|svn_version:\'10563\'|variable_revision_number:3|show_window:True|notes:\x5B\x5D]
+MeasureImageAreaOccupied:[module_num:8|svn_version:\'10563\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
     Hidden:1
     Measure the area occupied in a binary image, or in objects?:Binary Image
     Select objects to measure:None
@@ -98,9 +116,9 @@ MeasureImageAreaOccupied:[module_num:7|svn_version:\'10563\'|variable_revision_n
     Name the output binary image:Stain
     Select a binary image to measure:ThreshGreen
 
-SaveImages:[module_num:8|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+SaveImages:[module_num:9|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the type of image to save:Image
-    Select the image to save:ThreshGreen
+    Select the image to save:Inverted
     Select the objects to save:None
     Select the module display window to save:None
     Select method for constructing file names:From image filename
@@ -119,7 +137,7 @@ SaveImages:[module_num:8|svn_version:\'10822\'|variable_revision_number:7|show_w
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:No
 
-ExportToSpreadsheet:[module_num:9|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+ExportToSpreadsheet:[module_num:10|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select or enter the column delimiter:Comma (",")
     Prepend the output file name to the data file names?:Yes
     Add image metadata columns to your object data file?:No
