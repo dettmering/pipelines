@@ -48,7 +48,7 @@ LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_
     Channel number:1
     Rescale intensities?:Yes
 
-IdentifyPrimaryObjects:[module_num:2|svn_version:\'10826\'|variable_revision_number:8|show_window:False|notes:\x5B\'Identify the nuclei from the nuclear stain image. \'\x5D]
+IdentifyPrimaryObjects:[module_num:2|svn_version:\'10826\'|variable_revision_number:8|show_window:True|notes:\x5B\'Identify the nuclei from the nuclear stain image. \'\x5D]
     Select the input image:OrigDNA
     Name the primary objects to be identified:Nuclei
     Typical diameter of objects, in pixel units (Min,Max):5,30
@@ -57,16 +57,16 @@ IdentifyPrimaryObjects:[module_num:2|svn_version:\'10826\'|variable_revision_num
     Discard objects touching the border of the image?:Yes
     Select the thresholding method:Otsu Global
     Threshold correction factor:1
-    Lower and upper bounds on threshold:0.015,1.0
+    Lower and upper bounds on threshold:0.01,1.0
     Approximate fraction of image covered by objects?:0.1
     Method to distinguish clumped objects:Intensity
     Method to draw dividing lines between clumped objects:Intensity
-    Size of smoothing filter:10
+    Size of smoothing filter:17
     Suppress local maxima that are closer than this minimum allowed distance:5
-    Speed up by using lower-resolution image to find local maxima?:Yes
+    Speed up by using lower-resolution image to find local maxima?:No
     Name the outline image:NucOutlines
     Fill holes in identified objects?:Yes
-    Automatically calculate size of smoothing filter?:Yes
+    Automatically calculate size of smoothing filter?:No
     Automatically calculate minimum allowed distance between local maxima?:Yes
     Manual threshold:0.0
     Select binary image:MoG Adaptive
