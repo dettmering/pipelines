@@ -51,7 +51,7 @@ LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_
 IdentifyPrimaryObjects:[module_num:2|svn_version:\'10826\'|variable_revision_number:8|show_window:True|notes:\x5B\'Identify the nuclei from the nuclear stain image. \'\x5D]
     Select the input image:OrigDNA
     Name the primary objects to be identified:Nuclei
-    Typical diameter of objects, in pixel units (Min,Max):5,30
+    Typical diameter of objects, in pixel units (Min,Max):5,50
     Discard objects outside the diameter range?:Yes
     Try to merge too small objects with nearby larger objects?:No
     Discard objects touching the border of the image?:Yes
