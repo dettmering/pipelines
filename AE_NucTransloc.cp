@@ -57,10 +57,10 @@ IdentifyPrimaryObjects:[module_num:2|svn_version:\'10826\'|variable_revision_num
     Discard objects touching the border of the image?:Yes
     Select the thresholding method:Otsu Global
     Threshold correction factor:1
-    Lower and upper bounds on threshold:0,1
+    Lower and upper bounds on threshold:0.015,1.0
     Approximate fraction of image covered by objects?:0.1
-    Method to distinguish clumped objects:Shape
-    Method to draw dividing lines between clumped objects:Shape
+    Method to distinguish clumped objects:Intensity
+    Method to draw dividing lines between clumped objects:Intensity
     Size of smoothing filter:10
     Suppress local maxima that are closer than this minimum allowed distance:5
     Speed up by using lower-resolution image to find local maxima?:Yes
