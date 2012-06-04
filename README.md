@@ -7,3 +7,5 @@ hyperpipes: Tills beloved CellProfiler pipelines
 * __AE_NucleiMeasure:__ Measures nuclei area. For EMT identification.
 * __AE_NucTransloc_small:__ Optimized for many small nuclei (A549 normal morphology)
 * __AE_NucTransloc_large:__ Optimized for large nuclei (A549 EMT morphology)
+* __InvertForPrinting:__ Inverts image background to white and keeps 
+fluorescence color. From CP website.
