@@ -9,4 +9,3 @@ hyperpipes: Tills beloved CellProfiler pipelines
 * __AE_NucTransloc_large:__ Optimized for large nuclei (A549 EMT morphology)
 * __InvertForPrinting:__ Inverts image background to white and keeps 
 fluorescence color. From CP website.
-* __FocusCheck:__ Checks whether images are in focus and flags those which are. Used if z-Stacks were taken to account for defocussing.
