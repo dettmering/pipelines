@@ -119,7 +119,7 @@ ImageMath:[module_num:7|svn_version:\'10718\'|variable_revision_number:3|show_wi
     Measurement:
     Image or measurement?:Image
     Select the second image:CorrGreen
-    Multiply the second image by:1
+    Multiply the second image by:1.2
     Measurement:
 
 RescaleIntensity:[module_num:8|svn_version:\'6746\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
@@ -140,7 +140,7 @@ RescaleIntensity:[module_num:8|svn_version:\'6746\'|variable_revision_number:2|s
     Enter the divisor:1
     Select the measurement to use as a divisor:None
 
-ApplyThreshold:[module_num:9|svn_version:\'6746\'|variable_revision_number:5|show_window:True|notes:\x5B\x5D]
+ApplyThreshold:[module_num:9|svn_version:\'6746\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
     Select the input image:Rescaled
     Name the output image:ThreshBlue
     Select the output image type:Binary (black and white)
