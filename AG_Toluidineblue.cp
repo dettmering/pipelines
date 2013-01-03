@@ -44,11 +44,7 @@ Resize:[module_num:2|svn_version:\'10627\'|variable_revision_number:4|show_windo
     Select the image with the desired dimensions:None
     Additional image count:0
 
-ConserveMemory:[module_num:3|svn_version:\'9401\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
-    Specify which images?:Images to remove
-    Select image to remove:InputImage
-
-ColorToGray:[module_num:4|svn_version:\'10318\'|variable_revision_number:2|show_window:True|notes:\x5B\'Splits RGB file, deletes red and blue channels and performs OTSU to generate black white image.\'\x5D]
+ColorToGray:[module_num:3|svn_version:\'10318\'|variable_revision_number:2|show_window:False|notes:\x5B\'Splits RGB file, deletes red and blue channels and performs OTSU to generate black white image.\'\x5D]
     Select the input image:ResizedInput
     Conversion method:Split
     Image type\x3A:RGB
@@ -67,7 +63,48 @@ ColorToGray:[module_num:4|svn_version:\'10318\'|variable_revision_number:2|show_
     Relative weight of the channel:1
     Image name\x3A:Channel1
 
-ImageMath:[module_num:5|svn_version:\'10718\'|variable_revision_number:3|show_window:True|notes:\x5B\x5D]
+ConserveMemory:[module_num:4|svn_version:\'9401\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
+    Specify which images?:Images to remove
+    Select image to remove:InputImage
+    Select image to remove:OrigRed
+    Select image to remove:ResizedInput
+
+CorrectIlluminationCalculate:[module_num:5|svn_version:\'10458\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+    Select the input image:OrigBlue
+    Name the output image:IllumBlue
+    Select how the illumination function is calculated:Regular
+    Dilate objects in the final averaged image?:No
+    Dilation radius:1
+    Block size:60
+    Rescale the illumination function?:Yes
+    Calculate function for each image individually, or based on all images?:Each
+    Smoothing method:Fit Polynomial
+    Method to calculate smoothing filter size:Automatic
+    Approximate object size:10
+    Smoothing filter size:10
+    Retain the averaged image for use later in the pipeline (for example, in SaveImages)?:No
+    Name the averaged image:IllumBlueAvg
+    Retain the dilated image for use later in the pipeline (for example, in SaveImages)?:No
+    Name the dilated image:IllumBlueDilated
+    Automatically calculate spline parameters?:Yes
+    Background mode:auto
+    Number of spline points:5
+    Background threshold:2
+    Image resampling factor:2
+    Maximum number of iterations:40
+    Residual value for convergence:0.001
+
+CorrectIlluminationApply:[module_num:6|svn_version:\'10300\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
+    Select the input image:OrigBlue
+    Name the output image:CorrBlue
+    Select the illumination function:IllumBlue
+    Select how the illumination function is applied:Divide
+    Select the input image:OrigGreen
+    Name the output image:CorrGreen
+    Select the illumination function:IllumBlue
+    Select how the illumination function is applied:Divide
+
+ImageMath:[module_num:7|svn_version:\'10718\'|variable_revision_number:3|show_window:True|notes:\x5B\x5D]
     Operation:Subtract
     Raise the power of the result by:1
     Multiply the result by:1
@@ -77,10 +114,10 @@ ImageMath:[module_num:5|svn_version:\'10718\'|variable_revision_number:3|show_wi
     Ignore the image masks?:No
     Name the output image:ImageAfterMath
     Image or measurement?:Image
-    Select the first image:OrigBlue
+    Select the first image:CorrBlue
     Multiply the first image by:1
     Measurement:
     Image or measurement?:Image
-    Select the second image:OrigGreen
+    Select the second image:CorrGreen
     Multiply the second image by:1
     Measurement:
