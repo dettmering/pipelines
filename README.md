@@ -1,4 +1,4 @@
-hyperpipes: Tills beloved CellProfiler pipelines
+pipelines: Tills beloved CellProfiler pipelines
 ================================================
 
 * __TD_NucleiCount:__ Only detects Nuclei in 20x Epi eyefield
