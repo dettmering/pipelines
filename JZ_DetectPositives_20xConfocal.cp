@@ -550,3 +550,11 @@ ExportToSpreadsheet:[module_num:27|svn_version:\'10880\'|variable_revision_numbe
     Combine these object measurements with those of the previous object?:Yes
     File name:DATA.csv
     Use the object name for the file name?:Yes
+    Data to export:DirectBackgroundGreen
+    Combine these object measurements with those of the previous object?:No
+    File name:DATA.csv
+    Use the object name for the file name?:Yes
+    Data to export:DirectBackgroundRed
+    Combine these object measurements with those of the previous object?:No
+    File name:DATA.csv
+    Use the object name for the file name?:Yes
