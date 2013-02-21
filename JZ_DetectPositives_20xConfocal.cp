@@ -64,12 +64,46 @@ LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_
     Channel number:1
     Rescale intensities?:Yes
 
-IdentifyPrimaryObjects:[module_num:2|svn_version:\'10826\'|variable_revision_number:8|show_window:True|notes:\x5B\'Identify the nuclei from the nuclear stain image. Some manual adjustment of the smoothing filter size and maxima supression distance is required to optimize segmentation.\'\x5D]
+MeasureImageQuality:[module_num:2|svn_version:\'11705\'|variable_revision_number:4|show_window:False|notes:\x5B\'Measures Focus Score\'\x5D]
+    Calculate metrics for which images?:Select...
+    Image count:1
+    Scale count:1
+    Threshold count:1
+    Select the images to measure:DAPI
+    Include the image rescaling value?:No
+    Calculate blur metrics?:Yes
+    Spatial scale for blur measurements:60
+    Calculate saturation metrics?:No
+    Calculate intensity metrics?:No
+    Calculate thresholds?:No
+    Use all thresholding methods?:No
+    Select a thresholding method:Otsu Global
+    Typical fraction of the image covered by objects:0.1
+    Two-class or three-class thresholding?:Two classes
+    Minimize the weighted variance or the entropy?:Weighted variance
+    Assign pixels in the middle intensity class to the foreground or the background?:Foreground
+
+FlagImage:[module_num:3|svn_version:\'10300\'|variable_revision_number:2|show_window:False|notes:\x5B\'Skips images with a too low focus score. When recording confocal tile scans, this is used to exclude out-of-focus images.\'\x5D]
+    Hidden:1
+    Hidden:1
+    Name the flag\'s category:ScoreTooLow
+    Name the flag:ScoreTooLow
+    Flag if any, or all, measurement(s) fails to meet the criteria?:Flag if any fail
+    Skip image set if flagged?:Yes
+    Flag is based on:Whole-image measurement
+    Select the object whose measurements will be used to flag:None
+    Which measurement?:ImageQuality_FocusScore_DAPI
+    Flag images based on low values?:Yes
+    Minimum value:0.2
+    Flag images based on high values?:No
+    Maximum value:1
+
+IdentifyPrimaryObjects:[module_num:4|svn_version:\'10826\'|variable_revision_number:8|show_window:False|notes:\x5B\'Identify the nuclei from the nuclear stain image. Some manual adjustment of the smoothing filter size and maxima supression distance is required to optimize segmentation.\'\x5D]
     Select the input image:DAPI
     Name the primary objects to be identified:Nuclei
-    Typical diameter of objects, in pixel units (Min,Max):6,40
+    Typical diameter of objects, in pixel units (Min,Max):10,40
     Discard objects outside the diameter range?:Yes
-    Try to merge too small objects with nearby larger objects?:No
+    Try to merge too small objects with nearby larger objects?:Yes
     Discard objects touching the border of the image?:Yes
     Select the thresholding method:Otsu Adaptive
     Threshold correction factor:1
@@ -98,7 +132,7 @@ IdentifyPrimaryObjects:[module_num:2|svn_version:\'10826\'|variable_revision_num
     Maximum number of objects:500
     Select the measurement to threshold with:None
 
-IdentifySecondaryObjects:[module_num:3|svn_version:\'10826\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+IdentifySecondaryObjects:[module_num:5|svn_version:\'10826\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the input objects:Nuclei
     Name the objects to be identified:Cells_Green
     Select the method to identify the secondary objects:Distance - B
@@ -124,7 +158,7 @@ IdentifySecondaryObjects:[module_num:3|svn_version:\'10826\'|variable_revision_n
     Select the measurement to threshold with:None
     Fill holes in identified objects?:Yes
 
-IdentifySecondaryObjects:[module_num:4|svn_version:\'10826\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+IdentifySecondaryObjects:[module_num:6|svn_version:\'10826\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the input objects:Nuclei
     Name the objects to be identified:Cells_Red
     Select the method to identify the secondary objects:Distance - B
@@ -150,7 +184,7 @@ IdentifySecondaryObjects:[module_num:4|svn_version:\'10826\'|variable_revision_n
     Select the measurement to threshold with:None
     Fill holes in identified objects?:Yes
 
-MeasureImageIntensity:[module_num:5|svn_version:\'10816\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+MeasureImageIntensity:[module_num:7|svn_version:\'10816\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Select the image to measure:FITC
     Measure the intensity only from areas enclosed by objects?:Yes
     Select the input objects:Cells_Green
@@ -158,7 +192,7 @@ MeasureImageIntensity:[module_num:5|svn_version:\'10816\'|variable_revision_numb
     Measure the intensity only from areas enclosed by objects?:Yes
     Select the input objects:Cells_Red
 
-CalculateMath:[module_num:6|svn_version:\'10905\'|variable_revision_number:1|show_window:False|notes:\x5B\'CV * mu * F + mu\', \'F= 15\'\x5D]
+CalculateMath:[module_num:8|svn_version:\'10905\'|variable_revision_number:1|show_window:False|notes:\x5B\'CV * mu * F + mu\', \'F= 15\'\x5D]
     Name the output measurement:Math_Green
     Operation:Add
     Select the first operand measurement type:Image
@@ -175,7 +209,7 @@ CalculateMath:[module_num:6|svn_version:\'10905\'|variable_revision_number:1|sho
     Multiply the result by:1
     Raise the power of result by:1
 
-CalculateMath:[module_num:7|svn_version:\'10905\'|variable_revision_number:1|show_window:False|notes:\x5B\'CV * mu * F + mu\', \'F= 15\'\x5D]
+CalculateMath:[module_num:9|svn_version:\'10905\'|variable_revision_number:1|show_window:False|notes:\x5B\'CV * mu * F + mu\', \'F= 15\'\x5D]
     Name the output measurement:Math_Red
     Operation:Add
     Select the first operand measurement type:Image
@@ -192,7 +226,7 @@ CalculateMath:[module_num:7|svn_version:\'10905\'|variable_revision_number:1|sho
     Multiply the result by:1
     Raise the power of result by:1
 
-ApplyThreshold:[module_num:8|svn_version:\'6746\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
+ApplyThreshold:[module_num:10|svn_version:\'6746\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
     Select the input image:FITC
     Name the output image:ThreshGreen
     Select the output image type:Grayscale
@@ -210,7 +244,7 @@ ApplyThreshold:[module_num:8|svn_version:\'6746\'|variable_revision_number:5|sho
     Assign pixels in the middle intensity class to the foreground or the background?:Foreground
     Select the measurement to threshold with:Math_Math_Green
 
-ApplyThreshold:[module_num:9|svn_version:\'6746\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
+ApplyThreshold:[module_num:11|svn_version:\'6746\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
     Select the input image:PI
     Name the output image:ThreshRed
     Select the output image type:Grayscale
@@ -228,22 +262,22 @@ ApplyThreshold:[module_num:9|svn_version:\'6746\'|variable_revision_number:5|sho
     Assign pixels in the middle intensity class to the foreground or the background?:Foreground
     Select the measurement to threshold with:Math_Math_Red
 
-MeasureObjectSizeShape:[module_num:10|svn_version:\'1\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
+MeasureObjectSizeShape:[module_num:12|svn_version:\'1\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
     Select objects to measure:Cells_Green
     Select objects to measure:Cells_Red
     Calculate the Zernike features?:No
 
-MeasureObjectIntensity:[module_num:11|svn_version:\'10816\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
+MeasureObjectIntensity:[module_num:13|svn_version:\'10816\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
     Hidden:1
     Select an image to measure:ThreshGreen
     Select objects to measure:Cells_Green
 
-MeasureObjectIntensity:[module_num:12|svn_version:\'10816\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
+MeasureObjectIntensity:[module_num:14|svn_version:\'10816\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
     Hidden:1
     Select an image to measure:ThreshRed
     Select objects to measure:Cells_Red
 
-FilterObjects:[module_num:13|svn_version:\'10300\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
+FilterObjects:[module_num:15|svn_version:\'10300\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
     Name the output objects:FilteredGreen
     Select the object to filter:Cells_Green
     Filter using classifier rules or measurements?:Measurements
@@ -266,7 +300,7 @@ FilterObjects:[module_num:13|svn_version:\'10300\'|variable_revision_number:5|sh
     Filter using a maximum measurement value?:No
     Maximum value:1
 
-FilterObjects:[module_num:14|svn_version:\'10300\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
+FilterObjects:[module_num:16|svn_version:\'10300\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
     Name the output objects:FilteredRed
     Select the object to filter:Cells_Red
     Filter using classifier rules or measurements?:Measurements
@@ -289,7 +323,7 @@ FilterObjects:[module_num:14|svn_version:\'10300\'|variable_revision_number:5|sh
     Filter using a maximum measurement value?:No
     Maximum value:1
 
-RelateObjects:[module_num:15|svn_version:\'10300\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+RelateObjects:[module_num:17|svn_version:\'10300\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Select the input child objects:FilteredRed
     Select the input parent objects:FilteredGreen
     Calculate distances?:None
@@ -297,7 +331,7 @@ RelateObjects:[module_num:15|svn_version:\'10300\'|variable_revision_number:2|sh
     Calculate distances to other parents?:No
     Parent name:None
 
-FilterObjects:[module_num:16|svn_version:\'10300\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
+FilterObjects:[module_num:18|svn_version:\'10300\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
     Name the output objects:FilteredGreenRedDouble
     Select the object to filter:FilteredGreen
     Filter using classifier rules or measurements?:Measurements
@@ -315,7 +349,7 @@ FilterObjects:[module_num:16|svn_version:\'10300\'|variable_revision_number:5|sh
     Filter using a maximum measurement value?:No
     Maximum value:1
 
-GrayToColor:[module_num:17|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+GrayToColor:[module_num:19|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Select a color scheme:RGB
     Select the input image to be colored red:PI
     Select the input image to be colored green:FITC
@@ -334,21 +368,50 @@ GrayToColor:[module_num:17|svn_version:\'10341\'|variable_revision_number:2|show
     Relative weight for the brightness image:1
     Select the input image to add to the stacked image:None
 
-OverlayOutlines:[module_num:18|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+GrayToColor:[module_num:20|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+    Select a color scheme:RGB
+    Select the input image to be colored red:Leave this black
+    Select the input image to be colored green:FITC
+    Select the input image to be colored blue:Leave this black
+    Name the output image:FITCOverlay
+    Relative weight for the red image:1
+    Relative weight for the green image:1
+    Relative weight for the blue image:1
+    Select the input image to be colored cyan:Leave this black
+    Select the input image to be colored magenta:Leave this black
+    Select the input image to be colored yellow:Leave this black
+    Select the input image that determines brightness:Leave this black
+    Relative weight for the cyan image:1
+    Relative weight for the magenta image:1
+    Relative weight for the yellow image:1
+    Relative weight for the brightness image:1
+    Select the input image to add to the stacked image:None
+
+OverlayOutlines:[module_num:21|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Display outlines on a blank image?:No
     Select image on which to display outlines:ColorImage
     Name the output image:OrigOverlay
     Select outline display mode:Color
     Select method to determine brightness of outlines:Max of image
     Width of outlines:1
+    Select outlines to display:NucOutlines
+    Select outline color:Blue
     Select outlines to display:FilteredGreenObjects
     Select outline color:Green
     Select outlines to display:FilteredRedObjects
     Select outline color:Red
-    Select outlines to display:NucOutlines
-    Select outline color:Blue
 
-SaveImages:[module_num:19|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+OverlayOutlines:[module_num:22|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+    Display outlines on a blank image?:No
+    Select image on which to display outlines:FITCOverlay
+    Name the output image:FITCOverlayFinal
+    Select outline display mode:Color
+    Select method to determine brightness of outlines:Max of image
+    Width of outlines:1
+    Select outlines to display:NucOutlines
+    Select outline color:White
+
+SaveImages:[module_num:23|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the type of image to save:Image
     Select the image to save:ColorImage
     Select the objects to save:None
@@ -358,7 +421,7 @@ SaveImages:[module_num:19|svn_version:\'10822\'|variable_revision_number:7|show_
     Enter single file name:OrigBlue
     Do you want to add a suffix to the image file name?:Yes
     Text to append to the image name:_MergeRGB
-    Select file format to use:png
+    Select file format to use:jpg
     Output file location:Default Output Folder sub-folder\x7COutlines
     Image bit depth:8
     Overwrite existing files without warning?:Yes
@@ -369,7 +432,7 @@ SaveImages:[module_num:19|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:Yes
 
-SaveImages:[module_num:20|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+SaveImages:[module_num:24|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the type of image to save:Image
     Select the image to save:OrigOverlay
     Select the objects to save:None
@@ -379,7 +442,7 @@ SaveImages:[module_num:20|svn_version:\'10822\'|variable_revision_number:7|show_
     Enter single file name:OrigBlue
     Do you want to add a suffix to the image file name?:Yes
     Text to append to the image name:_Outlined
-    Select file format to use:png
+    Select file format to use:jpg
     Output file location:Default Output Folder sub-folder\x7COutlines
     Image bit depth:8
     Overwrite existing files without warning?:Yes
@@ -390,7 +453,28 @@ SaveImages:[module_num:20|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:Yes
 
-ExportToSpreadsheet:[module_num:21|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B"Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv\'s."\x5D]
+SaveImages:[module_num:25|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+    Select the type of image to save:Image
+    Select the image to save:FITCOverlayFinal
+    Select the objects to save:None
+    Select the module display window to save:None
+    Select method for constructing file names:From image filename
+    Select image name for file prefix:DAPI
+    Enter single file name:OrigBlue
+    Do you want to add a suffix to the image file name?:Yes
+    Text to append to the image name:_FITC-Nuclei
+    Select file format to use:png
+    Output file location:Default Output Folder sub-folder\x7COutlines
+    Image bit depth:8
+    Overwrite existing files without warning?:No
+    Select how often to save:Every cycle
+    Rescale the images? :No
+    Save as grayscale or color image?:Grayscale
+    Select colormap:gray
+    Store file and path information to the saved image?:No
+    Create subfolders in the output folder?:No
+
+ExportToSpreadsheet:[module_num:26|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B"Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv\'s."\x5D]
     Select or enter the column delimiter:,
     Prepend the output file name to the data file names?:Yes
     Add image metadata columns to your object data file?:No
