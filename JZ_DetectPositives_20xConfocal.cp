@@ -249,7 +249,7 @@ RelateObjects:[module_num:11|svn_version:\'10300\'|variable_revision_number:2|sh
     Parent name:None
 
 ClassifyObjects:[module_num:12|svn_version:\'10720\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
-    Should each classification decision be based on a single measurement or on the combination of a pair of measurements?:Single measurement
+    Should each classification decision be based on a single measurement or on the combination of a pair of measurements?:Pair of measurements
     Hidden:1
     Select the object to be classified:DirectBackground
     Select the measurement to classify by:Math_ThresholdDirectBackground
@@ -265,19 +265,19 @@ ClassifyObjects:[module_num:12|svn_version:\'10720\'|variable_revision_number:2|
     Retain an image of the objects classified by their measurements, for use later in the pipeline (for example, in SaveImages)?:Yes
     Name the output image:ClassifiedNuclei
     Enter the object name:DirectBackground
-    Select the first measurement:Parent_DirectBackground
+    Select the first measurement:Math_ThresholdDirectBackground
     Method to select the cutoff:Mean
     Enter the cutoff value:0.5
-    Select the second measurement:None
+    Select the second measurement:Mean_Cells_Green_Intensity_MeanIntensity_FITC
     Method to select the cutoff:Mean
     Enter the cutoff value:0.5
-    Use custom names for the bins?:No
+    Use custom names for the bins?:Yes
     Enter the low-low bin name:low_low
     Enter the low-high bin name:low_high
     Enter the high-low bin name:high_low
     Enter the high-high bin name:high_high
-    Retain an image of the objects classified by their measurements, for use later in the pipeline (for example, in SaveImages)?:No
-    Enter the image name:None
+    Retain an image of the objects classified by their measurements, for use later in the pipeline (for example, in SaveImages)?:Yes
+    Enter the image name:ClassifiedNuclei
 
 GrayToColor:[module_num:13|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Select a color scheme:RGB
