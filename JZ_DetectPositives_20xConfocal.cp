@@ -172,7 +172,7 @@ IdentifySecondaryObjects:[module_num:6|svn_version:\'10826\'|variable_revision_n
     Name the outline image:Cells_GreenOutlines
     Manual threshold:0.0
     Select binary image:None
-    Retain outlines of the identified secondary objects?:Yes
+    Retain outlines of the identified secondary objects?:No
     Two-class or three-class thresholding?:Two classes
     Minimize the weighted variance or the entropy?:Weighted variance
     Assign pixels in the middle intensity class to the foreground or the background?:Foreground
@@ -187,7 +187,7 @@ IdentifySecondaryObjects:[module_num:6|svn_version:\'10826\'|variable_revision_n
 IdentifyTertiaryObjects:[module_num:7|svn_version:\'10300\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
     Select the larger identified objects:Cells_Green_Ext
     Select the smaller identified objects:Cells_Green
-    Name the tertiary objects to be identified:DirectBackground
+    Name the tertiary objects to be identified:DirectBackgroundGreen
     Name the outline image:CytoplasmOutlines
     Retain outlines of the tertiary objects?:No
 
@@ -217,22 +217,61 @@ IdentifySecondaryObjects:[module_num:8|svn_version:\'10826\'|variable_revision_n
     Select the measurement to threshold with:None
     Fill holes in identified objects?:No
 
-MeasureObjectIntensity:[module_num:9|svn_version:\'10816\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
+IdentifySecondaryObjects:[module_num:9|svn_version:\'10826\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+    Select the input objects:Nuclei
+    Name the objects to be identified:Cells_Red_Ext
+    Select the method to identify the secondary objects:Distance - N
+    Select the input image:PI
+    Select the thresholding method:Otsu PerObject
+    Threshold correction factor:1
+    Lower and upper bounds on threshold:0.000000,1.000000
+    Approximate fraction of image covered by objects?:0.01
+    Number of pixels by which to expand the primary objects:8
+    Regularization factor:0.05
+    Name the outline image:Cells_RedOutlines
+    Manual threshold:0.0
+    Select binary image:None
+    Retain outlines of the identified secondary objects?:No
+    Two-class or three-class thresholding?:Two classes
+    Minimize the weighted variance or the entropy?:Weighted variance
+    Assign pixels in the middle intensity class to the foreground or the background?:Foreground
+    Discard secondary objects that touch the edge of the image?:No
+    Discard the associated primary objects?:No
+    Name the new primary objects:FilteredNuclei
+    Retain outlines of the new primary objects?:No
+    Name the new primary object outlines:FilteredNucleiOutlines
+    Select the measurement to threshold with:None
+    Fill holes in identified objects?:No
+
+IdentifyTertiaryObjects:[module_num:10|svn_version:\'10300\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
+    Select the larger identified objects:Cells_Red_Ext
+    Select the smaller identified objects:Cells_Red
+    Name the tertiary objects to be identified:DirectBackgroundRed
+    Name the outline image:CytoplasmOutlines
+    Retain outlines of the tertiary objects?:No
+
+MeasureObjectIntensity:[module_num:11|svn_version:\'10816\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
     Hidden:1
     Select an image to measure:FITC
     Select objects to measure:Cells_Green
-    Select objects to measure:DirectBackground
+    Select objects to measure:DirectBackgroundGreen
 
-CalculateMath:[module_num:10|svn_version:\'10905\'|variable_revision_number:1|show_window:False|notes:\x5B\'Mean + 2*SD\'\x5D]
-    Name the output measurement:ThresholdDirectBackground
+MeasureObjectIntensity:[module_num:12|svn_version:\'10816\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
+    Hidden:1
+    Select an image to measure:PI
+    Select objects to measure:Cells_Red
+    Select objects to measure:DirectBackgroundRed
+
+CalculateMath:[module_num:13|svn_version:\'10905\'|variable_revision_number:1|show_window:False|notes:\x5B\'Mean + 2*SD\'\x5D]
+    Name the output measurement:ThresholdDirectBackgroundGreen
     Operation:Add
     Select the first operand measurement type:Object
-    Select the first operand objects:DirectBackground
+    Select the first operand objects:DirectBackgroundGreen
     Select the first operand measurement:Intensity_StdIntensity_FITC
     Multiply the above operand by:2
     Raise the power of above operand by:1
     Select the second operand measurement type:Object
-    Select the second operand objects:DirectBackground
+    Select the second operand objects:DirectBackgroundGreen
     Select the second operand measurement:Intensity_MeanIntensity_FITC
     Multiply the above operand by:1
     Raise the power of above operand by:1
@@ -240,15 +279,40 @@ CalculateMath:[module_num:10|svn_version:\'10905\'|variable_revision_number:1|sh
     Multiply the result by:1
     Raise the power of result by:1
 
-RelateObjects:[module_num:11|svn_version:\'10300\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+CalculateMath:[module_num:14|svn_version:\'10905\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
+    Name the output measurement:ThresholdDirectBackgroundRed
+    Operation:Add
+    Select the first operand measurement type:Object
+    Select the first operand objects:DirectBackgroundRed
+    Select the first operand measurement:Intensity_StdIntensity_PI
+    Multiply the above operand by:2
+    Raise the power of above operand by:1
+    Select the second operand measurement type:Object
+    Select the second operand objects:DirectBackgroundRed
+    Select the second operand measurement:Intensity_MeanIntensity_PI
+    Multiply the above operand by:1
+    Raise the power of above operand by:1
+    Take log10 of result?:No
+    Multiply the result by:1
+    Raise the power of result by:1
+
+RelateObjects:[module_num:15|svn_version:\'10300\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Select the input child objects:Cells_Green
-    Select the input parent objects:DirectBackground
+    Select the input parent objects:DirectBackgroundGreen
     Calculate distances?:None
     Calculate per-parent means for all child measurements?:Yes
     Calculate distances to other parents?:No
     Parent name:None
 
-ClassifyObjects:[module_num:12|svn_version:\'10720\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+RelateObjects:[module_num:16|svn_version:\'10300\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+    Select the input child objects:Cells_Red
+    Select the input parent objects:DirectBackgroundRed
+    Calculate distances?:None
+    Calculate per-parent means for all child measurements?:Yes
+    Calculate distances to other parents?:No
+    Parent name:None
+
+ClassifyObjects:[module_num:17|svn_version:\'10720\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Should each classification decision be based on a single measurement or on the combination of a pair of measurements?:Pair of measurements
     Hidden:1
     Select the object to be classified:DirectBackground
@@ -264,22 +328,53 @@ ClassifyObjects:[module_num:12|svn_version:\'10720\'|variable_revision_number:2|
     Enter the bin names separated by commas:Negative,Positive
     Retain an image of the objects classified by their measurements, for use later in the pipeline (for example, in SaveImages)?:Yes
     Name the output image:ClassifiedNuclei
-    Enter the object name:DirectBackground
-    Select the first measurement:Math_ThresholdDirectBackground
+    Enter the object name:DirectBackgroundGreen
+    Select the first measurement:Math_ThresholdDirectBackgroundGreen
     Method to select the cutoff:Mean
     Enter the cutoff value:0.5
     Select the second measurement:Mean_Cells_Green_Intensity_MeanIntensity_FITC
     Method to select the cutoff:Mean
     Enter the cutoff value:0.5
     Use custom names for the bins?:Yes
-    Enter the low-low bin name:low_low
-    Enter the low-high bin name:low_high
-    Enter the high-low bin name:high_low
-    Enter the high-high bin name:high_high
+    Enter the low-low bin name:GREEN_low_low
+    Enter the low-high bin name:GREEN_ow_high
+    Enter the high-low bin name:GREEN_high_low
+    Enter the high-high bin name:GREEN_high_high
     Retain an image of the objects classified by their measurements, for use later in the pipeline (for example, in SaveImages)?:Yes
-    Enter the image name:ClassifiedNuclei
+    Enter the image name:ClassifiedNucleiGreen
 
-GrayToColor:[module_num:13|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+ClassifyObjects:[module_num:18|svn_version:\'10720\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+    Should each classification decision be based on a single measurement or on the combination of a pair of measurements?:Pair of measurements
+    Hidden:1
+    Select the object to be classified:DirectBackground
+    Select the measurement to classify by:Math_ThresholdDirectBackground
+    Select bin spacing:Evenly spaced bins
+    Number of bins:2
+    Lower threshold:0
+    Use a bin for objects below the threshold?:No
+    Upper threshold:1
+    Use a bin for objects above the threshold?:No
+    Enter the custom thresholds separating the values between bins:0,1
+    Give each bin a name?:Yes
+    Enter the bin names separated by commas:Negative,Positive
+    Retain an image of the objects classified by their measurements, for use later in the pipeline (for example, in SaveImages)?:Yes
+    Name the output image:ClassifiedNuclei
+    Enter the object name:DirectBackgroundRed
+    Select the first measurement:Math_ThresholdDirectBackgroundRed
+    Method to select the cutoff:Mean
+    Enter the cutoff value:0.5
+    Select the second measurement:Mean_Cells_Red_Intensity_MeanIntensity_PI
+    Method to select the cutoff:Mean
+    Enter the cutoff value:0.5
+    Use custom names for the bins?:Yes
+    Enter the low-low bin name:RED_low_low
+    Enter the low-high bin name:RED_low_high
+    Enter the high-low bin name:RED_high_low
+    Enter the high-high bin name:RED_high_high
+    Retain an image of the objects classified by their measurements, for use later in the pipeline (for example, in SaveImages)?:Yes
+    Enter the image name:ClassifiedNucleiRed
+
+GrayToColor:[module_num:19|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Select a color scheme:RGB
     Select the input image to be colored red:PI
     Select the input image to be colored green:FITC
@@ -298,7 +393,7 @@ GrayToColor:[module_num:13|svn_version:\'10341\'|variable_revision_number:2|show
     Relative weight for the brightness image:1
     Select the input image to add to the stacked image:None
 
-GrayToColor:[module_num:14|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+GrayToColor:[module_num:20|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Select a color scheme:RGB
     Select the input image to be colored red:Leave this black
     Select the input image to be colored green:FITC
@@ -317,7 +412,7 @@ GrayToColor:[module_num:14|svn_version:\'10341\'|variable_revision_number:2|show
     Relative weight for the brightness image:1
     Select the input image to add to the stacked image:None
 
-OverlayOutlines:[module_num:15|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+OverlayOutlines:[module_num:21|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Display outlines on a blank image?:No
     Select image on which to display outlines:ColorImage
     Name the output image:OrigOverlay
@@ -329,7 +424,7 @@ OverlayOutlines:[module_num:15|svn_version:\'10672\'|variable_revision_number:2|
     Select outlines to display:Cells_GreenOutlines
     Select outline color:Green
 
-OverlayOutlines:[module_num:16|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+OverlayOutlines:[module_num:22|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Display outlines on a blank image?:No
     Select image on which to display outlines:FITCOverlay
     Name the output image:FITCOverlayFinal
@@ -339,7 +434,7 @@ OverlayOutlines:[module_num:16|svn_version:\'10672\'|variable_revision_number:2|
     Select outlines to display:NucOutlines
     Select outline color:White
 
-SaveImages:[module_num:17|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+SaveImages:[module_num:23|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the type of image to save:Image
     Select the image to save:ColorImage
     Select the objects to save:None
@@ -360,7 +455,7 @@ SaveImages:[module_num:17|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:Yes
 
-SaveImages:[module_num:18|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+SaveImages:[module_num:24|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the type of image to save:Image
     Select the image to save:OrigOverlay
     Select the objects to save:None
@@ -381,16 +476,16 @@ SaveImages:[module_num:18|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:Yes
 
-SaveImages:[module_num:19|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+SaveImages:[module_num:25|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the type of image to save:Image
-    Select the image to save:ClassifiedNuclei
+    Select the image to save:ClassifiedNucleiGreen
     Select the objects to save:None
     Select the module display window to save:None
     Select method for constructing file names:From image filename
     Select image name for file prefix:DAPI
     Enter single file name:OrigBlue
     Do you want to add a suffix to the image file name?:Yes
-    Text to append to the image name:_Classification
+    Text to append to the image name:_ClassificationGreen
     Select file format to use:jpg
     Output file location:Default Output Folder sub-folder\x7COutlines
     Image bit depth:8
@@ -402,7 +497,7 @@ SaveImages:[module_num:19|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:Yes
 
-SaveImages:[module_num:20|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+SaveImages:[module_num:26|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the type of image to save:Image
     Select the image to save:FITCOverlayFinal
     Select the objects to save:None
@@ -423,7 +518,7 @@ SaveImages:[module_num:20|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:No
 
-ExportToSpreadsheet:[module_num:21|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B"Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv\'s."\x5D]
+ExportToSpreadsheet:[module_num:27|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B"Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv\'s."\x5D]
     Select or enter the column delimiter:,
     Prepend the output file name to the data file names?:Yes
     Add image metadata columns to your object data file?:No
