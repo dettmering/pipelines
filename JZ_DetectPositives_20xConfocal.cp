@@ -135,13 +135,13 @@ IdentifyPrimaryObjects:[module_num:4|svn_version:\'10826\'|variable_revision_num
 IdentifySecondaryObjects:[module_num:5|svn_version:\'10826\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the input objects:Nuclei
     Name the objects to be identified:Cells_Green
-    Select the method to identify the secondary objects:Distance - B
+    Select the method to identify the secondary objects:Distance - N
     Select the input image:FITC
     Select the thresholding method:Otsu PerObject
     Threshold correction factor:1
     Lower and upper bounds on threshold:0.000000,1.000000
     Approximate fraction of image covered by objects?:0.01
-    Number of pixels by which to expand the primary objects:6
+    Number of pixels by which to expand the primary objects:1
     Regularization factor:0.05
     Name the outline image:Cells_GreenOutlines
     Manual threshold:0.0
@@ -156,18 +156,18 @@ IdentifySecondaryObjects:[module_num:5|svn_version:\'10826\'|variable_revision_n
     Retain outlines of the new primary objects?:No
     Name the new primary object outlines:FilteredNucleiOutlines
     Select the measurement to threshold with:None
-    Fill holes in identified objects?:Yes
+    Fill holes in identified objects?:No
 
 IdentifySecondaryObjects:[module_num:6|svn_version:\'10826\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the input objects:Nuclei
     Name the objects to be identified:Cells_Red
-    Select the method to identify the secondary objects:Distance - B
+    Select the method to identify the secondary objects:Distance - N
     Select the input image:PI
     Select the thresholding method:Otsu PerObject
     Threshold correction factor:1
     Lower and upper bounds on threshold:0.000000,1.000000
     Approximate fraction of image covered by objects?:0.01
-    Number of pixels by which to expand the primary objects:6
+    Number of pixels by which to expand the primary objects:1
     Regularization factor:0.05
     Name the outline image:Cells_RedOutlines
     Manual threshold:0.0
@@ -182,7 +182,7 @@ IdentifySecondaryObjects:[module_num:6|svn_version:\'10826\'|variable_revision_n
     Retain outlines of the new primary objects?:No
     Name the new primary object outlines:FilteredNucleiOutlines
     Select the measurement to threshold with:None
-    Fill holes in identified objects?:Yes
+    Fill holes in identified objects?:No
 
 MeasureImageIntensity:[module_num:7|svn_version:\'10816\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Select the image to measure:FITC
