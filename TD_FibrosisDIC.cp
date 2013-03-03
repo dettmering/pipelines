@@ -51,7 +51,15 @@ MeasureImageQuality:[module_num:2|svn_version:\'11705\'|variable_revision_number
     Minimize the weighted variance or the entropy?:Weighted variance
     Assign pixels in the middle intensity class to the foreground or the background?:Foreground
 
-ImageMath:[module_num:3|svn_version:\'10718\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
+Smooth:[module_num:3|svn_version:\'10465\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
+    Select the input image:DIC
+    Name the output image:DICBlur
+    Select smoothing method:Gaussian Filter
+    Calculate artifact diameter automatically?:No
+    Typical artifact diameter, in  pixels:5.0
+    Edge intensity difference:0.1
+
+ImageMath:[module_num:4|svn_version:\'10718\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
     Operation:Invert
     Raise the power of the result by:1
     Multiply the result by:1
@@ -61,7 +69,7 @@ ImageMath:[module_num:3|svn_version:\'10718\'|variable_revision_number:3|show_wi
     Ignore the image masks?:No
     Name the output image:DICInverted
     Image or measurement?:Image
-    Select the first image:DIC
+    Select the first image:DICBlur
     Multiply the first image by:1
     Measurement:
     Image or measurement?:Image
@@ -69,7 +77,7 @@ ImageMath:[module_num:3|svn_version:\'10718\'|variable_revision_number:3|show_wi
     Multiply the second image by:1
     Measurement:
 
-ApplyThreshold:[module_num:4|svn_version:\'6746\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
+ApplyThreshold:[module_num:5|svn_version:\'6746\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
     Select the input image:DICInverted
     Name the output image:DICThresholded
     Select the output image type:Binary (black and white)
@@ -87,7 +95,7 @@ ApplyThreshold:[module_num:4|svn_version:\'6746\'|variable_revision_number:5|sho
     Assign pixels in the middle intensity class to the foreground or the background?:Foreground
     Select the measurement to threshold with:None
 
-MeasureImageAreaOccupied:[module_num:5|svn_version:\'10563\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
+MeasureImageAreaOccupied:[module_num:6|svn_version:\'10563\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
     Hidden:1
     Measure the area occupied in a binary image, or in objects?:Binary Image
     Select objects to measure:None
@@ -95,7 +103,7 @@ MeasureImageAreaOccupied:[module_num:5|svn_version:\'10563\'|variable_revision_n
     Name the output binary image:Stain
     Select a binary image to measure:DICThresholded
 
-SaveImages:[module_num:6|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+SaveImages:[module_num:7|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the type of image to save:Image
     Select the image to save:DICThresholded
     Select the objects to save:None
@@ -116,7 +124,7 @@ SaveImages:[module_num:6|svn_version:\'10822\'|variable_revision_number:7|show_w
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:No
 
-ExportToSpreadsheet:[module_num:7|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+ExportToSpreadsheet:[module_num:8|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select or enter the column delimiter:Comma (",")
     Prepend the output file name to the data file names?:Yes
     Add image metadata columns to your object data file?:No
