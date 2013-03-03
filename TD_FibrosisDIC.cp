@@ -32,7 +32,7 @@ LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_
     Channel number:1
     Rescale intensities?:Yes
 
-MeasureImageQuality:[module_num:2|svn_version:\'11705\'|variable_revision_number:4|show_window:False|notes:\x5B\x5D]
+MeasureImageQuality:[module_num:2|svn_version:\'11705\'|variable_revision_number:4|show_window:False|notes:\x5B\'Score focus\'\x5D]
     Calculate metrics for which images?:All loaded images
     Image count:1
     Scale count:1
@@ -51,7 +51,7 @@ MeasureImageQuality:[module_num:2|svn_version:\'11705\'|variable_revision_number
     Minimize the weighted variance or the entropy?:Weighted variance
     Assign pixels in the middle intensity class to the foreground or the background?:Foreground
 
-Smooth:[module_num:3|svn_version:\'10465\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
+Smooth:[module_num:3|svn_version:\'10465\'|variable_revision_number:1|show_window:False|notes:\x5B\'Smooth by 5 px to get better readout of occupied area\'\x5D]
     Select the input image:DIC
     Name the output image:DICBlur
     Select smoothing method:Gaussian Filter
@@ -59,7 +59,7 @@ Smooth:[module_num:3|svn_version:\'10465\'|variable_revision_number:1|show_windo
     Typical artifact diameter, in  pixels:5.0
     Edge intensity difference:0.1
 
-ImageMath:[module_num:4|svn_version:\'10718\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
+ImageMath:[module_num:4|svn_version:\'10718\'|variable_revision_number:3|show_window:False|notes:\x5B\'Invert image to get readout of occupied pixels right\'\x5D]
     Operation:Invert
     Raise the power of the result by:1
     Multiply the result by:1
@@ -77,7 +77,7 @@ ImageMath:[module_num:4|svn_version:\'10718\'|variable_revision_number:3|show_wi
     Multiply the second image by:1
     Measurement:
 
-ApplyThreshold:[module_num:5|svn_version:\'6746\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
+ApplyThreshold:[module_num:5|svn_version:\'6746\'|variable_revision_number:5|show_window:False|notes:\x5B\'Binarize image by Otsu thresholding\'\x5D]
     Select the input image:DICInverted
     Name the output image:DICThresholded
     Select the output image type:Binary (black and white)
@@ -95,7 +95,7 @@ ApplyThreshold:[module_num:5|svn_version:\'6746\'|variable_revision_number:5|sho
     Assign pixels in the middle intensity class to the foreground or the background?:Foreground
     Select the measurement to threshold with:None
 
-MeasureImageAreaOccupied:[module_num:6|svn_version:\'10563\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
+MeasureImageAreaOccupied:[module_num:6|svn_version:\'10563\'|variable_revision_number:3|show_window:False|notes:\x5B\'How many pixels are white? --> Occupied area\', \'PercentMaximal from MeasureImageIntensity module results in the same readout as AreaOccupied*100/TotalArea.\'\x5D]
     Hidden:1
     Measure the area occupied in a binary image, or in objects?:Binary Image
     Select objects to measure:None
@@ -103,7 +103,27 @@ MeasureImageAreaOccupied:[module_num:6|svn_version:\'10563\'|variable_revision_n
     Name the output binary image:Stain
     Select a binary image to measure:DICThresholded
 
-SaveImages:[module_num:7|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+MeasureImageIntensity:[module_num:7|svn_version:\'10816\'|variable_revision_number:2|show_window:False|notes:\x5B\'Intensity of thresholded images is measured to find mis-thresholded images.\', \'PercentMaximal = Occupied area\'\x5D]
+    Select the image to measure:DICThresholded
+    Measure the intensity only from areas enclosed by objects?:No
+    Select the input objects:None
+
+FlagImage:[module_num:8|svn_version:\'10300\'|variable_revision_number:2|show_window:False|notes:\x5B\'Flags images with more than 80 percent white pixels in it, which mostly means mis-thresholded images. This value may have to be adjusted.\'\x5D]
+    Hidden:1
+    Hidden:1
+    Name the flag\'s category:Metadata
+    Name the flag:QCFlag
+    Flag if any, or all, measurement(s) fails to meet the criteria?:Flag if any fail
+    Skip image set if flagged?:No
+    Flag is based on:Whole-image measurement
+    Select the object whose measurements will be used to flag:None
+    Which measurement?:Intensity_PercentMaximal_DICThresholded
+    Flag images based on low values?:No
+    Minimum value:0
+    Flag images based on high values?:Yes
+    Maximum value:80
+
+SaveImages:[module_num:9|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the type of image to save:Image
     Select the image to save:DICThresholded
     Select the objects to save:None
@@ -124,7 +144,7 @@ SaveImages:[module_num:7|svn_version:\'10822\'|variable_revision_number:7|show_w
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:No
 
-ExportToSpreadsheet:[module_num:8|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+ExportToSpreadsheet:[module_num:10|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select or enter the column delimiter:Comma (",")
     Prepend the output file name to the data file names?:Yes
     Add image metadata columns to your object data file?:No
