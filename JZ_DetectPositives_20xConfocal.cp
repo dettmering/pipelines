@@ -2,7 +2,7 @@ CellProfiler Pipeline: http://www.cellprofiler.org
 Version:1
 SVNRevision:11710
 
-LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_window:False|notes:\x5B\'Load the images by matching files in the folder against the unique text pattern for each stain\x3A d0.tif for nuclei, d1.tif for the PH3 image, d2.tif for the cell stain image. The three images together comprise an image set.\'\x5D]
+LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_window:False|notes:\x5B\'This pipeline is optimized for\x3A Lung cryosections, 10 um thickness, confocal, 20x objective, DAPI + 2 ch\'\x5D]
     File type to be loaded:individual images
     File selection method:Text-Regular expressions
     Number of images in each group?:3
