@@ -103,20 +103,20 @@ IdentifyPrimaryObjects:[module_num:4|svn_version:\'10826\'|variable_revision_num
     Name the primary objects to be identified:Nuclei
     Typical diameter of objects, in pixel units (Min,Max):10,40
     Discard objects outside the diameter range?:Yes
-    Try to merge too small objects with nearby larger objects?:Yes
+    Try to merge too small objects with nearby larger objects?:No
     Discard objects touching the border of the image?:Yes
-    Select the thresholding method:Otsu Adaptive
-    Threshold correction factor:1
-    Lower and upper bounds on threshold:0.008,1.0
+    Select the thresholding method:Otsu Global
+    Threshold correction factor:1.5
+    Lower and upper bounds on threshold:0,1.0
     Approximate fraction of image covered by objects?:0.1
     Method to distinguish clumped objects:Intensity
     Method to draw dividing lines between clumped objects:Intensity
-    Size of smoothing filter:10
+    Size of smoothing filter:14
     Suppress local maxima that are closer than this minimum allowed distance:5
     Speed up by using lower-resolution image to find local maxima?:Yes
     Name the outline image:NucOutlines
     Fill holes in identified objects?:Yes
-    Automatically calculate size of smoothing filter?:Yes
+    Automatically calculate size of smoothing filter?:No
     Automatically calculate minimum allowed distance between local maxima?:Yes
     Manual threshold:0.0
     Select binary image:MoG Global
