@@ -379,7 +379,7 @@ GrayToColor:[module_num:19|svn_version:\'10341\'|variable_revision_number:2|show
     Select the input image to be colored red:PI
     Select the input image to be colored green:FITC
     Select the input image to be colored blue:DAPI
-    Name the output image:ColorImage
+    Name the output image:RGB_merge
     Relative weight for the red image:1
     Relative weight for the green image:1
     Relative weight for the blue image:1
@@ -397,8 +397,8 @@ GrayToColor:[module_num:20|svn_version:\'10341\'|variable_revision_number:2|show
     Select a color scheme:RGB
     Select the input image to be colored red:Leave this black
     Select the input image to be colored green:FITC
-    Select the input image to be colored blue:Leave this black
-    Name the output image:FITCOverlay
+    Select the input image to be colored blue:DAPI
+    Name the output image:FITCDAPI_merge
     Relative weight for the red image:1
     Relative weight for the green image:1
     Relative weight for the blue image:1
@@ -412,10 +412,29 @@ GrayToColor:[module_num:20|svn_version:\'10341\'|variable_revision_number:2|show
     Relative weight for the brightness image:1
     Select the input image to add to the stacked image:None
 
-OverlayOutlines:[module_num:21|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+GrayToColor:[module_num:21|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+    Select a color scheme:RGB
+    Select the input image to be colored red:Leave this black
+    Select the input image to be colored green:FITC
+    Select the input image to be colored blue:Leave this black
+    Name the output image:FITC_coloured
+    Relative weight for the red image:1
+    Relative weight for the green image:1
+    Relative weight for the blue image:1
+    Select the input image to be colored cyan:Leave this black
+    Select the input image to be colored magenta:Leave this black
+    Select the input image to be colored yellow:Leave this black
+    Select the input image that determines brightness:Leave this black
+    Relative weight for the cyan image:1
+    Relative weight for the magenta image:1
+    Relative weight for the yellow image:1
+    Relative weight for the brightness image:1
+    Select the input image to add to the stacked image:None
+
+OverlayOutlines:[module_num:22|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Display outlines on a blank image?:No
-    Select image on which to display outlines:ColorImage
-    Name the output image:OrigOverlay
+    Select image on which to display outlines:RGB_merge
+    Name the output image:RGB_merge_outline
     Select outline display mode:Color
     Select method to determine brightness of outlines:Max of image
     Width of outlines:1
@@ -424,19 +443,19 @@ OverlayOutlines:[module_num:21|svn_version:\'10672\'|variable_revision_number:2|
     Select outlines to display:Cells_GreenOutlines
     Select outline color:Green
 
-OverlayOutlines:[module_num:22|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+OverlayOutlines:[module_num:23|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Display outlines on a blank image?:No
-    Select image on which to display outlines:FITCOverlay
-    Name the output image:FITCOverlayFinal
+    Select image on which to display outlines:FITC_coloured
+    Name the output image:FITC_coloured_outline
     Select outline display mode:Color
     Select method to determine brightness of outlines:Max of image
     Width of outlines:1
     Select outlines to display:NucOutlines
     Select outline color:White
 
-SaveImages:[module_num:23|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+SaveImages:[module_num:24|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the type of image to save:Image
-    Select the image to save:ColorImage
+    Select the image to save:RGB_merge
     Select the objects to save:None
     Select the module display window to save:None
     Select method for constructing file names:From image filename
@@ -455,16 +474,37 @@ SaveImages:[module_num:23|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:Yes
 
-SaveImages:[module_num:24|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+SaveImages:[module_num:25|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the type of image to save:Image
-    Select the image to save:OrigOverlay
+    Select the image to save:FITC_coloured
     Select the objects to save:None
     Select the module display window to save:None
     Select method for constructing file names:From image filename
     Select image name for file prefix:DAPI
     Enter single file name:OrigBlue
     Do you want to add a suffix to the image file name?:Yes
-    Text to append to the image name:_Outlined
+    Text to append to the image name:_FITC
+    Select file format to use:png
+    Output file location:Default Output Folder sub-folder\x7COutlines
+    Image bit depth:8
+    Overwrite existing files without warning?:Yes
+    Select how often to save:Every cycle
+    Rescale the images? :No
+    Save as grayscale or color image?:Grayscale
+    Select colormap:gray
+    Store file and path information to the saved image?:No
+    Create subfolders in the output folder?:Yes
+
+SaveImages:[module_num:26|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+    Select the type of image to save:Image
+    Select the image to save:DAPI
+    Select the objects to save:None
+    Select the module display window to save:None
+    Select method for constructing file names:From image filename
+    Select image name for file prefix:DAPI
+    Enter single file name:OrigBlue
+    Do you want to add a suffix to the image file name?:Yes
+    Text to append to the image name:_DAPI
     Select file format to use:jpg
     Output file location:Default Output Folder sub-folder\x7COutlines
     Image bit depth:8
@@ -476,7 +516,49 @@ SaveImages:[module_num:24|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:Yes
 
-SaveImages:[module_num:25|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+SaveImages:[module_num:27|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+    Select the type of image to save:Image
+    Select the image to save:FITC_coloured_outline
+    Select the objects to save:None
+    Select the module display window to save:None
+    Select method for constructing file names:From image filename
+    Select image name for file prefix:DAPI
+    Enter single file name:OrigBlue
+    Do you want to add a suffix to the image file name?:Yes
+    Text to append to the image name:_FITC_outline
+    Select file format to use:png
+    Output file location:Default Output Folder sub-folder\x7COutlines
+    Image bit depth:8
+    Overwrite existing files without warning?:No
+    Select how often to save:Every cycle
+    Rescale the images? :No
+    Save as grayscale or color image?:Grayscale
+    Select colormap:gray
+    Store file and path information to the saved image?:No
+    Create subfolders in the output folder?:No
+
+SaveImages:[module_num:28|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+    Select the type of image to save:Image
+    Select the image to save:FITCDAPI_merge
+    Select the objects to save:None
+    Select the module display window to save:None
+    Select method for constructing file names:From image filename
+    Select image name for file prefix:DAPI
+    Enter single file name:OrigBlue
+    Do you want to add a suffix to the image file name?:Yes
+    Text to append to the image name:_MergeFITCDAPI
+    Select file format to use:jpg
+    Output file location:Default Output Folder sub-folder\x7COutlines
+    Image bit depth:8
+    Overwrite existing files without warning?:Yes
+    Select how often to save:Every cycle
+    Rescale the images? :No
+    Save as grayscale or color image?:Grayscale
+    Select colormap:gray
+    Store file and path information to the saved image?:No
+    Create subfolders in the output folder?:Yes
+
+SaveImages:[module_num:29|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the type of image to save:Image
     Select the image to save:ClassifiedNucleiGreen
     Select the objects to save:None
@@ -497,28 +579,7 @@ SaveImages:[module_num:25|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:Yes
 
-SaveImages:[module_num:26|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
-    Select the type of image to save:Image
-    Select the image to save:FITCOverlayFinal
-    Select the objects to save:None
-    Select the module display window to save:None
-    Select method for constructing file names:From image filename
-    Select image name for file prefix:DAPI
-    Enter single file name:OrigBlue
-    Do you want to add a suffix to the image file name?:Yes
-    Text to append to the image name:_FITC-Nuclei
-    Select file format to use:png
-    Output file location:Default Output Folder sub-folder\x7COutlines
-    Image bit depth:8
-    Overwrite existing files without warning?:No
-    Select how often to save:Every cycle
-    Rescale the images? :No
-    Save as grayscale or color image?:Grayscale
-    Select colormap:gray
-    Store file and path information to the saved image?:No
-    Create subfolders in the output folder?:No
-
-ExportToSpreadsheet:[module_num:27|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B"Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv\'s."\x5D]
+ExportToSpreadsheet:[module_num:30|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B"Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv\'s."\x5D]
     Select or enter the column delimiter:,
     Prepend the output file name to the data file names?:Yes
     Add image metadata columns to your object data file?:No
