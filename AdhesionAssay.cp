@@ -283,3 +283,24 @@ SaveImages:[module_num:14|svn_version:\'10822\'|variable_revision_number:7|show_
     Select colormap:gray
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:No
+
+ExportToSpreadsheet:[module_num:15|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+    Select or enter the column delimiter:Comma (",")
+    Prepend the output file name to the data file names?:Yes
+    Add image metadata columns to your object data file?:No
+    Limit output to a size that is allowed in Excel?:No
+    Select the columns of measurements to export?:No
+    Calculate the per-image mean values for object measurements?:No
+    Calculate the per-image median values for object measurements?:No
+    Calculate the per-image standard deviation values for object measurements?:No
+    Output file location:Default Output Folder\x7CNone
+    Create a GenePattern GCT file?:No
+    Select source of sample row name:Metadata
+    Select the image to use as the identifier:None
+    Select the metadata to use as the identifier:None
+    Export all measurements, using default file names?:Yes
+    Press button to select measurements to export:
+    Data to export:Do not use
+    Combine these object measurements with those of the previous object?:No
+    File name:DATA.csv
+    Use the object name for the file name?:Yes
