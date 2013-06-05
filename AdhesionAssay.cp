@@ -170,7 +170,33 @@ IdentifyPrimaryObjects:[module_num:8|svn_version:\'10826\'|variable_revision_num
     Maximum number of objects:500
     Select the measurement to threshold with:None
 
-IdentifyPrimaryObjects:[module_num:9|svn_version:\'10826\'|variable_revision_number:8|show_window:False|notes:\x5B\x5D]
+IdentifySecondaryObjects:[module_num:9|svn_version:\'10826\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+    Select the input objects:EC
+    Name the objects to be identified:ECexpanded
+    Select the method to identify the secondary objects:Distance - N
+    Select the input image:CorrPhako
+    Select the thresholding method:Otsu Global
+    Threshold correction factor:1
+    Lower and upper bounds on threshold:0.000000,1.000000
+    Approximate fraction of image covered by objects?:0.01
+    Number of pixels by which to expand the primary objects:30
+    Regularization factor:0.05
+    Name the outline image:ECSecondaryOutlines
+    Manual threshold:0.0
+    Select binary image:None
+    Retain outlines of the identified secondary objects?:Yes
+    Two-class or three-class thresholding?:Two classes
+    Minimize the weighted variance or the entropy?:Weighted variance
+    Assign pixels in the middle intensity class to the foreground or the background?:Foreground
+    Discard secondary objects that touch the edge of the image?:No
+    Discard the associated primary objects?:No
+    Name the new primary objects:FilteredNuclei
+    Retain outlines of the new primary objects?:No
+    Name the new primary object outlines:FilteredNucleiOutlines
+    Select the measurement to threshold with:None
+    Fill holes in identified objects?:Yes
+
+IdentifyPrimaryObjects:[module_num:10|svn_version:\'10826\'|variable_revision_number:8|show_window:False|notes:\x5B\x5D]
     Select the input image:CorrFITC
     Name the primary objects to be identified:PBL
     Typical diameter of objects, in pixel units (Min,Max):3,10
@@ -204,14 +230,22 @@ IdentifyPrimaryObjects:[module_num:9|svn_version:\'10826\'|variable_revision_num
     Maximum number of objects:500
     Select the measurement to threshold with:None
 
-ConserveMemory:[module_num:10|svn_version:\'9401\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
+RelateObjects:[module_num:11|svn_version:\'10300\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+    Select the input child objects:PBL
+    Select the input parent objects:ECexpanded
+    Calculate distances?:None
+    Calculate per-parent means for all child measurements?:No
+    Calculate distances to other parents?:No
+    Parent name:None
+
+ConserveMemory:[module_num:12|svn_version:\'9401\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
     Specify which images?:Images to remove
     Select image to remove:IllumFITC
     Select image to remove:IllumPhako
     Select image to remove:CorrFITC
     Select image to remove:CorrPhako
 
-OverlayOutlines:[module_num:11|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+OverlayOutlines:[module_num:13|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Display outlines on a blank image?:No
     Select image on which to display outlines:Phako
     Name the output image:PhakoOverlay
@@ -222,8 +256,10 @@ OverlayOutlines:[module_num:11|svn_version:\'10672\'|variable_revision_number:2|
     Select outline color:Black
     Select outlines to display:PBLOutlines
     Select outline color:Green
+    Select outlines to display:ECSecondaryOutlines
+    Select outline color:White
 
-GrayToColor:[module_num:12|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+GrayToColor:[module_num:14|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Select a color scheme:RGB
     Select the input image to be colored red:Leave this black
     Select the input image to be colored green:FITC
@@ -242,7 +278,7 @@ GrayToColor:[module_num:12|svn_version:\'10341\'|variable_revision_number:2|show
     Relative weight for the brightness image:1
     Select the input image to add to the stacked image:None
 
-SaveImages:[module_num:13|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+SaveImages:[module_num:15|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the type of image to save:Image
     Select the image to save:PhakoOverlay
     Select the objects to save:None
@@ -263,7 +299,7 @@ SaveImages:[module_num:13|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:No
 
-SaveImages:[module_num:14|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+SaveImages:[module_num:16|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the type of image to save:Image
     Select the image to save:ECPBLRaw
     Select the objects to save:None
@@ -284,7 +320,7 @@ SaveImages:[module_num:14|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:No
 
-ExportToSpreadsheet:[module_num:15|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+ExportToSpreadsheet:[module_num:17|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select or enter the column delimiter:Comma (",")
     Prepend the output file name to the data file names?:Yes
     Add image metadata columns to your object data file?:No
