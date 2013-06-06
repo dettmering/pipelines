@@ -2,7 +2,7 @@ CellProfiler Pipeline: http://www.cellprofiler.org
 Version:1
 SVNRevision:11710
 
-LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_window:False|notes:\x5B\x5D]
+LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_window:False|notes:\x5B\'Loading images. Replace "common text" FITC for PI if necessary. In that case, leave the rest as FITC.\'\x5D]
     File type to be loaded:individual images
     File selection method:Text-Exact match
     Number of images in each group?:3
@@ -48,7 +48,7 @@ LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_
     Channel number:1
     Rescale intensities?:Yes
 
-CorrectIlluminationCalculate:[module_num:2|svn_version:\'10458\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+CorrectIlluminationCalculate:[module_num:2|svn_version:\'10458\'|variable_revision_number:2|show_window:False|notes:\x5B\'Calculate illumination correction for PBL channel.\'\x5D]
     Select the input image:FITC
     Name the output image:IllumFITC
     Select how the illumination function is calculated:Regular
@@ -73,7 +73,7 @@ CorrectIlluminationCalculate:[module_num:2|svn_version:\'10458\'|variable_revisi
     Maximum number of iterations:40
     Residual value for convergence:0.001
 
-CorrectIlluminationCalculate:[module_num:3|svn_version:\'10458\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+CorrectIlluminationCalculate:[module_num:3|svn_version:\'10458\'|variable_revision_number:2|show_window:False|notes:\x5B\'Calculate illumination correction for phase contrast EC channel.\'\x5D]
     Select the input image:Phako
     Name the output image:IllumPhako
     Select how the illumination function is calculated:Regular
@@ -98,19 +98,19 @@ CorrectIlluminationCalculate:[module_num:3|svn_version:\'10458\'|variable_revisi
     Maximum number of iterations:40
     Residual value for convergence:0.001
 
-CorrectIlluminationApply:[module_num:4|svn_version:\'10300\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
+CorrectIlluminationApply:[module_num:4|svn_version:\'10300\'|variable_revision_number:3|show_window:False|notes:\x5B\'Correct illumination for PBL.\'\x5D]
     Select the input image:FITC
     Name the output image:CorrFITC
     Select the illumination function:IllumFITC
     Select how the illumination function is applied:Divide
 
-CorrectIlluminationApply:[module_num:5|svn_version:\'10300\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
+CorrectIlluminationApply:[module_num:5|svn_version:\'10300\'|variable_revision_number:3|show_window:False|notes:\x5B\'Collect illumination for EC. Divide produces grey image, subtract works.\'\x5D]
     Select the input image:Phako
     Name the output image:CorrPhako
     Select the illumination function:IllumPhako
     Select how the illumination function is applied:Subtract
 
-EnhanceOrSuppressFeatures:[module_num:6|svn_version:\'10591\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+EnhanceOrSuppressFeatures:[module_num:6|svn_version:\'10591\'|variable_revision_number:2|show_window:False|notes:\x5B\'Enhace dark holes in EC phase contrast image. Works well, is used to count EC.\'\x5D]
     Select the input image:CorrPhako
     Name the output image:FeaturePhako
     Select the operation:Enhance
@@ -118,7 +118,7 @@ EnhanceOrSuppressFeatures:[module_num:6|svn_version:\'10591\'|variable_revision_
     Feature type:Dark holes
     Range of hole sizes:5,30
 
-ApplyThreshold:[module_num:7|svn_version:\'6746\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
+ApplyThreshold:[module_num:7|svn_version:\'6746\'|variable_revision_number:5|show_window:False|notes:\x5B\'Apply threshold to extracted features. Needs to be done for cell detection to work.\'\x5D]
     Select the input image:FeaturePhako
     Name the output image:ThreshPhako
     Select the output image type:Binary (black and white)
@@ -136,7 +136,7 @@ ApplyThreshold:[module_num:7|svn_version:\'6746\'|variable_revision_number:5|sho
     Assign pixels in the middle intensity class to the foreground or the background?:Background
     Select the measurement to threshold with:None
 
-IdentifyPrimaryObjects:[module_num:8|svn_version:\'10826\'|variable_revision_number:8|show_window:False|notes:\x5B\x5D]
+IdentifyPrimaryObjects:[module_num:8|svn_version:\'10826\'|variable_revision_number:8|show_window:False|notes:\x5B\'Detects EC from thresholded phase contrast image.\'\x5D]
     Select the input image:ThreshPhako
     Name the primary objects to be identified:EC
     Typical diameter of objects, in pixel units (Min,Max):5,40
@@ -170,7 +170,7 @@ IdentifyPrimaryObjects:[module_num:8|svn_version:\'10826\'|variable_revision_num
     Maximum number of objects:500
     Select the measurement to threshold with:None
 
-IdentifySecondaryObjects:[module_num:9|svn_version:\'10826\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+IdentifySecondaryObjects:[module_num:9|svn_version:\'10826\'|variable_revision_number:7|show_window:False|notes:\x5B\'Expands borders to find cell borders. Not very precise. Can be used to estimate stuck PBL per EC, but is not really needed.\'\x5D]
     Select the input objects:EC
     Name the objects to be identified:ECexpanded
     Select the method to identify the secondary objects:Distance - N
@@ -196,7 +196,7 @@ IdentifySecondaryObjects:[module_num:9|svn_version:\'10826\'|variable_revision_n
     Select the measurement to threshold with:None
     Fill holes in identified objects?:Yes
 
-IdentifyPrimaryObjects:[module_num:10|svn_version:\'10826\'|variable_revision_number:8|show_window:False|notes:\x5B\x5D]
+IdentifyPrimaryObjects:[module_num:10|svn_version:\'10826\'|variable_revision_number:8|show_window:False|notes:\x5B\'Identify PBL. Thresholding is done very simple by Otsu x 1.5, but should be optimized to mu + 2 sigma thresholding.\'\x5D]
     Select the input image:CorrFITC
     Name the primary objects to be identified:PBL
     Typical diameter of objects, in pixel units (Min,Max):3,10
@@ -230,7 +230,7 @@ IdentifyPrimaryObjects:[module_num:10|svn_version:\'10826\'|variable_revision_nu
     Maximum number of objects:500
     Select the measurement to threshold with:None
 
-RelateObjects:[module_num:11|svn_version:\'10300\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+RelateObjects:[module_num:11|svn_version:\'10300\'|variable_revision_number:2|show_window:False|notes:\x5B\'How many PBL are on one EC?\'\x5D]
     Select the input child objects:PBL
     Select the input parent objects:ECexpanded
     Calculate distances?:None
@@ -238,14 +238,14 @@ RelateObjects:[module_num:11|svn_version:\'10300\'|variable_revision_number:2|sh
     Calculate distances to other parents?:No
     Parent name:None
 
-ConserveMemory:[module_num:12|svn_version:\'9401\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
+ConserveMemory:[module_num:12|svn_version:\'9401\'|variable_revision_number:1|show_window:False|notes:\x5B\'Removes unneeded images.\'\x5D]
     Specify which images?:Images to remove
     Select image to remove:IllumFITC
     Select image to remove:IllumPhako
     Select image to remove:CorrFITC
     Select image to remove:CorrPhako
 
-OverlayOutlines:[module_num:13|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+OverlayOutlines:[module_num:13|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\'Generate output image\'\x5D]
     Display outlines on a blank image?:No
     Select image on which to display outlines:Phako
     Name the output image:PhakoOverlay
@@ -259,7 +259,7 @@ OverlayOutlines:[module_num:13|svn_version:\'10672\'|variable_revision_number:2|
     Select outlines to display:ECSecondaryOutlines
     Select outline color:White
 
-GrayToColor:[module_num:14|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+GrayToColor:[module_num:14|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\'Generate output image\'\x5D]
     Select a color scheme:RGB
     Select the input image to be colored red:Leave this black
     Select the input image to be colored green:FITC
@@ -278,7 +278,7 @@ GrayToColor:[module_num:14|svn_version:\'10341\'|variable_revision_number:2|show
     Relative weight for the brightness image:1
     Select the input image to add to the stacked image:None
 
-SaveImages:[module_num:15|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+SaveImages:[module_num:15|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\'Save output image\'\x5D]
     Select the type of image to save:Image
     Select the image to save:PhakoOverlay
     Select the objects to save:None
@@ -299,7 +299,7 @@ SaveImages:[module_num:15|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:Yes
     Create subfolders in the output folder?:Yes
 
-SaveImages:[module_num:16|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+SaveImages:[module_num:16|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\'Save output image\'\x5D]
     Select the type of image to save:Image
     Select the image to save:ECPBLRaw
     Select the objects to save:None
@@ -320,7 +320,7 @@ SaveImages:[module_num:16|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:Yes
     Create subfolders in the output folder?:Yes
 
-ExportToSpreadsheet:[module_num:17|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+ExportToSpreadsheet:[module_num:17|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B\'Export data to spreadsheet\'\x5D]
     Select or enter the column delimiter:Comma (",")
     Prepend the output file name to the data file names?:Yes
     Add image metadata columns to your object data file?:Yes
