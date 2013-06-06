@@ -238,14 +238,20 @@ RelateObjects:[module_num:11|svn_version:\'10300\'|variable_revision_number:2|sh
     Calculate distances to other parents?:No
     Parent name:None
 
-ConserveMemory:[module_num:12|svn_version:\'9401\'|variable_revision_number:1|show_window:False|notes:\x5B\'Removes unneeded images.\'\x5D]
+MeasureObjectSizeShape:[module_num:12|svn_version:\'1\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
+    Select objects to measure:EC
+    Select objects to measure:ECexpanded
+    Select objects to measure:PBL
+    Calculate the Zernike features?:No
+
+ConserveMemory:[module_num:13|svn_version:\'9401\'|variable_revision_number:1|show_window:False|notes:\x5B\'Removes unneeded images.\'\x5D]
     Specify which images?:Images to remove
     Select image to remove:IllumFITC
     Select image to remove:IllumPhako
     Select image to remove:CorrFITC
     Select image to remove:CorrPhako
 
-OverlayOutlines:[module_num:13|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\'Generate output image\'\x5D]
+OverlayOutlines:[module_num:14|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\'Generate output image\'\x5D]
     Display outlines on a blank image?:No
     Select image on which to display outlines:Phako
     Name the output image:PhakoOverlay
@@ -259,7 +265,7 @@ OverlayOutlines:[module_num:13|svn_version:\'10672\'|variable_revision_number:2|
     Select outlines to display:ECSecondaryOutlines
     Select outline color:White
 
-GrayToColor:[module_num:14|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\'Generate output image\'\x5D]
+GrayToColor:[module_num:15|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\'Generate output image\'\x5D]
     Select a color scheme:RGB
     Select the input image to be colored red:Leave this black
     Select the input image to be colored green:FITC
@@ -278,7 +284,7 @@ GrayToColor:[module_num:14|svn_version:\'10341\'|variable_revision_number:2|show
     Relative weight for the brightness image:1
     Select the input image to add to the stacked image:None
 
-SaveImages:[module_num:15|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\'Save output image\'\x5D]
+SaveImages:[module_num:16|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\'Save output image\'\x5D]
     Select the type of image to save:Image
     Select the image to save:PhakoOverlay
     Select the objects to save:None
@@ -299,7 +305,7 @@ SaveImages:[module_num:15|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:Yes
     Create subfolders in the output folder?:Yes
 
-SaveImages:[module_num:16|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\'Save output image\'\x5D]
+SaveImages:[module_num:17|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\'Save output image\'\x5D]
     Select the type of image to save:Image
     Select the image to save:ECPBLRaw
     Select the objects to save:None
@@ -320,7 +326,7 @@ SaveImages:[module_num:16|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:Yes
     Create subfolders in the output folder?:Yes
 
-FlagImage:[module_num:17|svn_version:\'10300\'|variable_revision_number:2|show_window:False|notes:\x5B\'Flags images in which a low EC number was detected. The adhesion assay requires a confluent EC monolayer. The number of 270 EC is based on initial tests and is 2 Stdevs lower than the mean EC count per 512 x 512 px phase contrast image.\'\x5D]
+FlagImage:[module_num:18|svn_version:\'10300\'|variable_revision_number:2|show_window:False|notes:\x5B\'Flags images in which a low EC number was detected. The adhesion assay requires a confluent EC monolayer. The number of 270 EC is based on initial tests and is 2 Stdevs lower than the mean EC count per 512 x 512 px phase contrast image.\'\x5D]
     Hidden:1
     Hidden:1
     Name the flag\'s category:Metadata
@@ -335,15 +341,15 @@ FlagImage:[module_num:17|svn_version:\'10300\'|variable_revision_number:2|show_w
     Flag images based on high values?:No
     Maximum value:1
 
-ExportToSpreadsheet:[module_num:18|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B\'Export data to spreadsheet\'\x5D]
+ExportToSpreadsheet:[module_num:19|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B\'Export data to spreadsheet\'\x5D]
     Select or enter the column delimiter:Comma (",")
     Prepend the output file name to the data file names?:Yes
     Add image metadata columns to your object data file?:Yes
     Limit output to a size that is allowed in Excel?:No
     Select the columns of measurements to export?:No
-    Calculate the per-image mean values for object measurements?:No
-    Calculate the per-image median values for object measurements?:No
-    Calculate the per-image standard deviation values for object measurements?:No
+    Calculate the per-image mean values for object measurements?:Yes
+    Calculate the per-image median values for object measurements?:Yes
+    Calculate the per-image standard deviation values for object measurements?:Yes
     Output file location:Default Output Folder\x7CNone
     Create a GenePattern GCT file?:No
     Select source of sample row name:Metadata
