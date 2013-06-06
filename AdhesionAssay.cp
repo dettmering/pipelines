@@ -320,7 +320,22 @@ SaveImages:[module_num:16|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:Yes
     Create subfolders in the output folder?:Yes
 
-ExportToSpreadsheet:[module_num:17|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B\'Export data to spreadsheet\'\x5D]
+FlagImage:[module_num:17|svn_version:\'10300\'|variable_revision_number:2|show_window:False|notes:\x5B\'Flags images in which a low EC number was detected. The adhesion assay requires a confluent EC monolayer. The number of 270 EC is based on initial tests and is 2 Stdevs lower than the mean EC count per 512 x 512 px phase contrast image.\'\x5D]
+    Hidden:1
+    Hidden:1
+    Name the flag\'s category:Metadata
+    Name the flag:LowECNumber
+    Flag if any, or all, measurement(s) fails to meet the criteria?:Flag if any fail
+    Skip image set if flagged?:No
+    Flag is based on:Measurements for all objects in each image
+    Select the object whose measurements will be used to flag:EC
+    Which measurement?:Number_Object_Number
+    Flag images based on low values?:Yes
+    Minimum value:270
+    Flag images based on high values?:No
+    Maximum value:1
+
+ExportToSpreadsheet:[module_num:18|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B\'Export data to spreadsheet\'\x5D]
     Select or enter the column delimiter:Comma (",")
     Prepend the output file name to the data file names?:Yes
     Add image metadata columns to your object data file?:Yes
