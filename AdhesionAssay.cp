@@ -12,12 +12,12 @@ LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_
     Check image sets for missing or duplicate files?:Yes
     Group images by metadata?:No
     Exclude certain files?:No
-    Specify metadata fields to group by:
+    Specify metadata fields to group by:Run
     Select subfolders to analyze:
     Image count:2
     Text that these images have in common (case-sensitive):Phako
     Position of this image in each group:1
-    Extract metadata from where?:None
+    Extract metadata from where?:Path
     Regular expression that finds metadata in the file name:^(?P<Plate>.*)_(?P<Well>\x5BA-P\x5D\x5B0-9\x5D{2})_s(?P<Site>\x5B0-9\x5D)
     Type the regular expression that finds metadata in the subfolder path:.*\x5B\\\\/\x5D(?P<Date>.*)\x5B\\\\/\x5D(?P<Run>.*)$
     Channel count:1
@@ -33,7 +33,7 @@ LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_
     Rescale intensities?:Yes
     Text that these images have in common (case-sensitive):FITC
     Position of this image in each group:2
-    Extract metadata from where?:None
+    Extract metadata from where?:Path
     Regular expression that finds metadata in the file name:^(?P<Plate>.*)_(?P<Well>\x5BA-P\x5D\x5B0-9\x5D{2})_s(?P<Site>\x5B0-9\x5D)
     Type the regular expression that finds metadata in the subfolder path:.*\x5B\\\\/\x5D(?P<Date>.*)\x5B\\\\/\x5D(?P<Run>.*)$
     Channel count:1
@@ -289,15 +289,15 @@ SaveImages:[module_num:15|svn_version:\'10822\'|variable_revision_number:7|show_
     Do you want to add a suffix to the image file name?:Yes
     Text to append to the image name:_Outlines
     Select file format to use:jpg
-    Output file location:Default Output Folder\x7CNone
+    Output file location:Default Output Folder sub-folder\x7CImages
     Image bit depth:8
     Overwrite existing files without warning?:No
     Select how often to save:Every cycle
     Rescale the images? :No
     Save as grayscale or color image?:Grayscale
     Select colormap:gray
-    Store file and path information to the saved image?:No
-    Create subfolders in the output folder?:No
+    Store file and path information to the saved image?:Yes
+    Create subfolders in the output folder?:Yes
 
 SaveImages:[module_num:16|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the type of image to save:Image
@@ -310,20 +310,20 @@ SaveImages:[module_num:16|svn_version:\'10822\'|variable_revision_number:7|show_
     Do you want to add a suffix to the image file name?:Yes
     Text to append to the image name:_Overlay
     Select file format to use:jpg
-    Output file location:Default Output Folder\x7CNone
+    Output file location:Default Output Folder sub-folder\x7CImages
     Image bit depth:8
     Overwrite existing files without warning?:No
     Select how often to save:Every cycle
     Rescale the images? :No
     Save as grayscale or color image?:Grayscale
     Select colormap:gray
-    Store file and path information to the saved image?:No
-    Create subfolders in the output folder?:No
+    Store file and path information to the saved image?:Yes
+    Create subfolders in the output folder?:Yes
 
 ExportToSpreadsheet:[module_num:17|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select or enter the column delimiter:Comma (",")
     Prepend the output file name to the data file names?:Yes
-    Add image metadata columns to your object data file?:No
+    Add image metadata columns to your object data file?:Yes
     Limit output to a size that is allowed in Excel?:No
     Select the columns of measurements to export?:No
     Calculate the per-image mean values for object measurements?:No
