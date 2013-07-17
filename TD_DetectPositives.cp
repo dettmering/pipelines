@@ -14,7 +14,7 @@ LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_
     Exclude certain files?:No
     Specify metadata fields to group by:
     Select subfolders to analyze:
-    Image count:4
+    Image count:3
     Text that these images have in common (case-sensitive):3.tif
     Position of this image in each group:d0.tif
     Extract metadata from where?:Path
@@ -63,101 +63,8 @@ LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_
     Name the outline image:LoadedImageOutlines
     Channel number:1
     Rescale intensities?:Yes
-    Text that these images have in common (case-sensitive):0.tif
-    Position of this image in each group:4
-    Extract metadata from where?:Path
-    Regular expression that finds metadata in the file name:^(?P<Plate>.*)_(?P<Well>\x5BA-P\x5D\x5B0-9\x5D{2})_s(?P<Site>\x5B0-9\x5D)
-    Type the regular expression that finds metadata in the subfolder path:.*\x5B\\\\/\x5D(?P<Date>.*)\x5B\\\\/\x5D(?P<Run>.*)$
-    Channel count:1
-    Group the movie frames?:No
-    Grouping method:Interleaved
-    Number of channels per group:3
-    Load the input as images or objects?:Images
-    Name this loaded image:DIC
-    Name this loaded object:Nuclei
-    Retain outlines of loaded objects?:No
-    Name the outline image:LoadedImageOutlines
-    Channel number:1
-    Rescale intensities?:Yes
 
-MeasureImageQuality:[module_num:2|svn_version:\'11705\'|variable_revision_number:4|show_window:False|notes:\x5B\x5D]
-    Calculate metrics for which images?:Select...
-    Image count:1
-    Scale count:1
-    Threshold count:1
-    Select the images to measure:DIC
-    Include the image rescaling value?:Yes
-    Calculate blur metrics?:Yes
-    Spatial scale for blur measurements:20
-    Calculate saturation metrics?:No
-    Calculate intensity metrics?:No
-    Calculate thresholds?:No
-    Use all thresholding methods?:No
-    Select a thresholding method:Otsu Global
-    Typical fraction of the image covered by objects:0.1
-    Two-class or three-class thresholding?:Two classes
-    Minimize the weighted variance or the entropy?:Weighted variance
-    Assign pixels in the middle intensity class to the foreground or the background?:Foreground
-
-Smooth:[module_num:3|svn_version:\'10465\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
-    Select the input image:DIC
-    Name the output image:DICSmooth
-    Select smoothing method:Gaussian Filter
-    Calculate artifact diameter automatically?:No
-    Typical artifact diameter, in  pixels:5.0
-    Edge intensity difference:0.1
-
-ImageMath:[module_num:4|svn_version:\'10718\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
-    Operation:Invert
-    Raise the power of the result by:1
-    Multiply the result by:1
-    Add to result:0
-    Set values less than 0 equal to 0?:Yes
-    Set values greater than 1 equal to 1?:Yes
-    Ignore the image masks?:No
-    Name the output image:DICInverted
-    Image or measurement?:Image
-    Select the first image:DICSmooth
-    Multiply the first image by:1
-    Measurement:
-    Image or measurement?:Image
-    Select the second image:
-    Multiply the second image by:1
-    Measurement:
-
-ApplyThreshold:[module_num:5|svn_version:\'6746\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
-    Select the input image:DICInverted
-    Name the output image:DICThresholded
-    Select the output image type:Binary (black and white)
-    Set pixels below or above the threshold to zero?:Below threshold
-    Subtract the threshold value from the remaining pixel intensities?:No
-    Number of pixels by which to expand the thresholding around those excluded bright pixels:0.0
-    Select the thresholding method:Otsu Global
-    Manual threshold:0.0
-    Lower and upper bounds on threshold:0.000000,1.000000
-    Threshold correction factor:1
-    Approximate fraction of image covered by objects?:0.01
-    Select the input objects:None
-    Two-class or three-class thresholding?:Two classes
-    Minimize the weighted variance or the entropy?:Weighted variance
-    Assign pixels in the middle intensity class to the foreground or the background?:Foreground
-    Select the measurement to threshold with:None
-
-MeasureImageAreaOccupied:[module_num:6|svn_version:\'10563\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
-    Hidden:1
-    Measure the area occupied in a binary image, or in objects?:Binary Image
-    Select objects to measure:None
-    Retain a binary image of the object regions?:No
-    Name the output binary image:Stain
-    Select a binary image to measure:DICThresholded
-
-ConserveMemory:[module_num:7|svn_version:\'9401\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
-    Specify which images?:Images to remove
-    Select image to remove:DIC
-    Select image to remove:DICInverted
-    Select image to remove:DICSmooth
-
-CorrectIlluminationCalculate:[module_num:8|svn_version:\'10458\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+CorrectIlluminationCalculate:[module_num:2|svn_version:\'10458\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Select the input image:DAPI
     Name the output image:IllumBlue
     Select how the illumination function is calculated:Background
@@ -182,7 +89,7 @@ CorrectIlluminationCalculate:[module_num:8|svn_version:\'10458\'|variable_revisi
     Maximum number of iterations:40
     Residual value for convergence:0.001
 
-CorrectIlluminationCalculate:[module_num:9|svn_version:\'10458\'|variable_revision_number:2|show_window:False|notes:\x5B\'Rescale aktivieren? Ueber alle Bilder gleich anwenden?\'\x5D]
+CorrectIlluminationCalculate:[module_num:3|svn_version:\'10458\'|variable_revision_number:2|show_window:False|notes:\x5B\'Rescale aktivieren? Ueber alle Bilder gleich anwenden?\'\x5D]
     Select the input image:FITC
     Name the output image:IllumGreen
     Select how the illumination function is calculated:Regular
@@ -207,7 +114,7 @@ CorrectIlluminationCalculate:[module_num:9|svn_version:\'10458\'|variable_revisi
     Maximum number of iterations:40
     Residual value for convergence:0.001
 
-CorrectIlluminationCalculate:[module_num:10|svn_version:\'10458\'|variable_revision_number:2|show_window:False|notes:\x5B\'Rescale aktivieren? Ueber alle Bilder gleich anwenden?\'\x5D]
+CorrectIlluminationCalculate:[module_num:4|svn_version:\'10458\'|variable_revision_number:2|show_window:False|notes:\x5B\'Rescale aktivieren? Ueber alle Bilder gleich anwenden?\'\x5D]
     Select the input image:PI
     Name the output image:IllumRed
     Select how the illumination function is calculated:Regular
@@ -232,25 +139,25 @@ CorrectIlluminationCalculate:[module_num:10|svn_version:\'10458\'|variable_revis
     Maximum number of iterations:40
     Residual value for convergence:0.001
 
-CorrectIlluminationApply:[module_num:11|svn_version:\'10300\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
+CorrectIlluminationApply:[module_num:5|svn_version:\'10300\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
     Select the input image:DAPI
     Name the output image:CorrBlue
     Select the illumination function:IllumBlue
     Select how the illumination function is applied:Divide
 
-CorrectIlluminationApply:[module_num:12|svn_version:\'10300\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
+CorrectIlluminationApply:[module_num:6|svn_version:\'10300\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
     Select the input image:FITC
     Name the output image:CorrGreen
     Select the illumination function:IllumGreen
     Select how the illumination function is applied:Divide
 
-CorrectIlluminationApply:[module_num:13|svn_version:\'10300\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
+CorrectIlluminationApply:[module_num:7|svn_version:\'10300\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
     Select the input image:PI
     Name the output image:CorrRed
     Select the illumination function:IllumRed
     Select how the illumination function is applied:Divide
 
-IdentifyPrimaryObjects:[module_num:14|svn_version:\'10826\'|variable_revision_number:8|show_window:False|notes:\x5B\'Identify the nuclei from the nuclear stain image. Some manual adjustment of the smoothing filter size and maxima supression distance is required to optimize segmentation.\'\x5D]
+IdentifyPrimaryObjects:[module_num:8|svn_version:\'10826\'|variable_revision_number:8|show_window:False|notes:\x5B\'Identify the nuclei from the nuclear stain image. Some manual adjustment of the smoothing filter size and maxima supression distance is required to optimize segmentation.\'\x5D]
     Select the input image:CorrBlue
     Name the primary objects to be identified:Nuclei
     Typical diameter of objects, in pixel units (Min,Max):6,30
@@ -284,7 +191,7 @@ IdentifyPrimaryObjects:[module_num:14|svn_version:\'10826\'|variable_revision_nu
     Maximum number of objects:500
     Select the measurement to threshold with:None
 
-IdentifySecondaryObjects:[module_num:15|svn_version:\'10826\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+IdentifySecondaryObjects:[module_num:9|svn_version:\'10826\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the input objects:Nuclei
     Name the objects to be identified:Cells_Green
     Select the method to identify the secondary objects:Distance - B
@@ -310,7 +217,7 @@ IdentifySecondaryObjects:[module_num:15|svn_version:\'10826\'|variable_revision_
     Select the measurement to threshold with:None
     Fill holes in identified objects?:Yes
 
-IdentifySecondaryObjects:[module_num:16|svn_version:\'10826\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+IdentifySecondaryObjects:[module_num:10|svn_version:\'10826\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the input objects:Nuclei
     Name the objects to be identified:Cells_Red
     Select the method to identify the secondary objects:Distance - B
@@ -336,7 +243,7 @@ IdentifySecondaryObjects:[module_num:16|svn_version:\'10826\'|variable_revision_
     Select the measurement to threshold with:None
     Fill holes in identified objects?:Yes
 
-MeasureImageIntensity:[module_num:17|svn_version:\'10816\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+MeasureImageIntensity:[module_num:11|svn_version:\'10816\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Select the image to measure:CorrGreen
     Measure the intensity only from areas enclosed by objects?:Yes
     Select the input objects:Cells_Green
@@ -344,7 +251,7 @@ MeasureImageIntensity:[module_num:17|svn_version:\'10816\'|variable_revision_num
     Measure the intensity only from areas enclosed by objects?:Yes
     Select the input objects:Cells_Red
 
-CalculateMath:[module_num:18|svn_version:\'10905\'|variable_revision_number:1|show_window:False|notes:\x5B\'CV * mu * F + mu\', \'F= 15\'\x5D]
+CalculateMath:[module_num:12|svn_version:\'10905\'|variable_revision_number:1|show_window:False|notes:\x5B\'CV * mu * F + mu\', \'F= 15\'\x5D]
     Name the output measurement:Math_Green
     Operation:Add
     Select the first operand measurement type:Image
@@ -361,7 +268,7 @@ CalculateMath:[module_num:18|svn_version:\'10905\'|variable_revision_number:1|sh
     Multiply the result by:1
     Raise the power of result by:1
 
-CalculateMath:[module_num:19|svn_version:\'10905\'|variable_revision_number:1|show_window:False|notes:\x5B\'CV * mu * F + mu\', \'F= 15\'\x5D]
+CalculateMath:[module_num:13|svn_version:\'10905\'|variable_revision_number:1|show_window:False|notes:\x5B\'CV * mu * F + mu\', \'F= 15\'\x5D]
     Name the output measurement:Math_Red
     Operation:Add
     Select the first operand measurement type:Image
@@ -378,7 +285,7 @@ CalculateMath:[module_num:19|svn_version:\'10905\'|variable_revision_number:1|sh
     Multiply the result by:1
     Raise the power of result by:1
 
-ApplyThreshold:[module_num:20|svn_version:\'6746\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
+ApplyThreshold:[module_num:14|svn_version:\'6746\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
     Select the input image:CorrGreen
     Name the output image:ThreshGreen
     Select the output image type:Grayscale
@@ -396,7 +303,7 @@ ApplyThreshold:[module_num:20|svn_version:\'6746\'|variable_revision_number:5|sh
     Assign pixels in the middle intensity class to the foreground or the background?:Foreground
     Select the measurement to threshold with:Math_Math_Green
 
-ApplyThreshold:[module_num:21|svn_version:\'6746\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
+ApplyThreshold:[module_num:15|svn_version:\'6746\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
     Select the input image:CorrRed
     Name the output image:ThreshRed
     Select the output image type:Grayscale
@@ -414,22 +321,22 @@ ApplyThreshold:[module_num:21|svn_version:\'6746\'|variable_revision_number:5|sh
     Assign pixels in the middle intensity class to the foreground or the background?:Foreground
     Select the measurement to threshold with:Math_Math_Red
 
-MeasureObjectSizeShape:[module_num:22|svn_version:\'1\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
+MeasureObjectSizeShape:[module_num:16|svn_version:\'1\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
     Select objects to measure:Cells_Green
     Select objects to measure:Cells_Red
     Calculate the Zernike features?:No
 
-MeasureObjectIntensity:[module_num:23|svn_version:\'10816\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
+MeasureObjectIntensity:[module_num:17|svn_version:\'10816\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
     Hidden:1
     Select an image to measure:ThreshGreen
     Select objects to measure:Cells_Green
 
-MeasureObjectIntensity:[module_num:24|svn_version:\'10816\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
+MeasureObjectIntensity:[module_num:18|svn_version:\'10816\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
     Hidden:1
     Select an image to measure:ThreshRed
     Select objects to measure:Cells_Red
 
-ConserveMemory:[module_num:25|svn_version:\'9401\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
+ConserveMemory:[module_num:19|svn_version:\'9401\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
     Specify which images?:Images to remove
     Select image to remove:IllumBlue
     Select image to remove:IllumGreen
@@ -438,7 +345,7 @@ ConserveMemory:[module_num:25|svn_version:\'9401\'|variable_revision_number:1|sh
     Select image to remove:CorrGreen
     Select image to remove:CorrRed
 
-FilterObjects:[module_num:26|svn_version:\'10300\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
+FilterObjects:[module_num:20|svn_version:\'10300\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
     Name the output objects:FilteredGreen
     Select the object to filter:Cells_Green
     Filter using classifier rules or measurements?:Measurements
@@ -461,7 +368,7 @@ FilterObjects:[module_num:26|svn_version:\'10300\'|variable_revision_number:5|sh
     Filter using a maximum measurement value?:No
     Maximum value:1
 
-FilterObjects:[module_num:27|svn_version:\'10300\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
+FilterObjects:[module_num:21|svn_version:\'10300\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
     Name the output objects:FilteredRed
     Select the object to filter:Cells_Red
     Filter using classifier rules or measurements?:Measurements
@@ -484,7 +391,7 @@ FilterObjects:[module_num:27|svn_version:\'10300\'|variable_revision_number:5|sh
     Filter using a maximum measurement value?:No
     Maximum value:1
 
-RelateObjects:[module_num:28|svn_version:\'10300\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+RelateObjects:[module_num:22|svn_version:\'10300\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Select the input child objects:FilteredRed
     Select the input parent objects:FilteredGreen
     Calculate distances?:None
@@ -492,7 +399,7 @@ RelateObjects:[module_num:28|svn_version:\'10300\'|variable_revision_number:2|sh
     Calculate distances to other parents?:No
     Parent name:None
 
-FilterObjects:[module_num:29|svn_version:\'10300\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
+FilterObjects:[module_num:23|svn_version:\'10300\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D]
     Name the output objects:FilteredGreenRedDouble
     Select the object to filter:FilteredGreen
     Filter using classifier rules or measurements?:Measurements
@@ -510,7 +417,7 @@ FilterObjects:[module_num:29|svn_version:\'10300\'|variable_revision_number:5|sh
     Filter using a maximum measurement value?:No
     Maximum value:1
 
-RescaleIntensity:[module_num:30|svn_version:\'6746\'|variable_revision_number:2|show_window:False|notes:\x5B\'Rescales 4096 to 65536 grey values for export (x16)\'\x5D]
+RescaleIntensity:[module_num:24|svn_version:\'6746\'|variable_revision_number:2|show_window:False|notes:\x5B\'Rescales 4096 to 65536 grey values for export (x16)\'\x5D]
     Select the input image:DAPI
     Name the output image:RescaledBlue
     Select rescaling method:Choose specific values to be reset to a custom range
@@ -528,7 +435,7 @@ RescaleIntensity:[module_num:30|svn_version:\'6746\'|variable_revision_number:2|
     Enter the divisor:1
     Select the measurement to use as a divisor:None
 
-RescaleIntensity:[module_num:31|svn_version:\'6746\'|variable_revision_number:2|show_window:False|notes:\x5B\'Rescales 4096 to 65536 grey values for export (x16)\'\x5D]
+RescaleIntensity:[module_num:25|svn_version:\'6746\'|variable_revision_number:2|show_window:False|notes:\x5B\'Rescales 4096 to 65536 grey values for export (x16)\'\x5D]
     Select the input image:FITC
     Name the output image:RescaledGreen
     Select rescaling method:Choose specific values to be reset to a custom range
@@ -546,7 +453,7 @@ RescaleIntensity:[module_num:31|svn_version:\'6746\'|variable_revision_number:2|
     Enter the divisor:1
     Select the measurement to use as a divisor:None
 
-RescaleIntensity:[module_num:32|svn_version:\'6746\'|variable_revision_number:2|show_window:False|notes:\x5B\'Rescales 4096 to 65536 grey values for export (x16)\'\x5D]
+RescaleIntensity:[module_num:26|svn_version:\'6746\'|variable_revision_number:2|show_window:False|notes:\x5B\'Rescales 4096 to 65536 grey values for export (x16)\'\x5D]
     Select the input image:PI
     Name the output image:RescaledRed
     Select rescaling method:Choose specific values to be reset to a custom range
@@ -564,7 +471,7 @@ RescaleIntensity:[module_num:32|svn_version:\'6746\'|variable_revision_number:2|
     Enter the divisor:1
     Select the measurement to use as a divisor:None
 
-GrayToColor:[module_num:33|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+GrayToColor:[module_num:27|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Select a color scheme:RGB
     Select the input image to be colored red:RescaledRed
     Select the input image to be colored green:RescaledGreen
@@ -583,7 +490,7 @@ GrayToColor:[module_num:33|svn_version:\'10341\'|variable_revision_number:2|show
     Relative weight for the brightness image:1
     Select the input image to add to the stacked image:None
 
-OverlayOutlines:[module_num:34|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+OverlayOutlines:[module_num:28|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Display outlines on a blank image?:No
     Select image on which to display outlines:ColorImage
     Name the output image:OrigOverlay
@@ -597,7 +504,7 @@ OverlayOutlines:[module_num:34|svn_version:\'10672\'|variable_revision_number:2|
     Select outlines to display:NucOutlines
     Select outline color:Blue
 
-SaveImages:[module_num:35|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+SaveImages:[module_num:29|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the type of image to save:Image
     Select the image to save:ColorImage
     Select the objects to save:None
@@ -618,7 +525,7 @@ SaveImages:[module_num:35|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:Yes
 
-SaveImages:[module_num:36|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+SaveImages:[module_num:30|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the type of image to save:Image
     Select the image to save:OrigOverlay
     Select the objects to save:None
@@ -639,28 +546,7 @@ SaveImages:[module_num:36|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:Yes
 
-SaveImages:[module_num:37|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
-    Select the type of image to save:Image
-    Select the image to save:DICThresholded
-    Select the objects to save:None
-    Select the module display window to save:None
-    Select method for constructing file names:From image filename
-    Select image name for file prefix:DIC
-    Enter single file name:OrigBlue
-    Do you want to add a suffix to the image file name?:No
-    Text to append to the image name:Outlined
-    Select file format to use:jpg
-    Output file location:Default Output Folder sub-folder\x7C\\g<Date>
-    Image bit depth:8
-    Overwrite existing files without warning?:Yes
-    Select how often to save:Every cycle
-    Rescale the images? :No
-    Save as grayscale or color image?:Grayscale
-    Select colormap:gray
-    Store file and path information to the saved image?:No
-    Create subfolders in the output folder?:Yes
-
-ExportToSpreadsheet:[module_num:38|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B"Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv\'s."\x5D]
+ExportToSpreadsheet:[module_num:31|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B"Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv\'s."\x5D]
     Select or enter the column delimiter:,
     Prepend the output file name to the data file names?:Yes
     Add image metadata columns to your object data file?:No
