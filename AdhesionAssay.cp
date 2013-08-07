@@ -31,7 +31,7 @@ LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_
     Name the outline image:LoadedImageOutlines
     Channel number:1
     Rescale intensities?:Yes
-    Text that these images have in common (case-sensitive):FITC
+    Text that these images have in common (case-sensitive):DAPI
     Position of this image in each group:2
     Extract metadata from where?:Path
     Regular expression that finds metadata in the file name:^(?P<Plate>.*)_(?P<Well>\x5BA-P\x5D\x5B0-9\x5D{2})_s(?P<Site>\x5B0-9\x5D)
@@ -57,10 +57,10 @@ CorrectIlluminationCalculate:[module_num:2|svn_version:\'10458\'|variable_revisi
     Block size:60
     Rescale the illumination function?:Yes
     Calculate function for each image individually, or based on all images?:Each
-    Smoothing method:Fit Polynomial
-    Method to calculate smoothing filter size:Automatic
+    Smoothing method:Gaussian Filter
+    Method to calculate smoothing filter size:Manually
     Approximate object size:10
-    Smoothing filter size:10
+    Smoothing filter size:20
     Retain the averaged image for use later in the pipeline (for example, in SaveImages)?:No
     Name the averaged image:IllumBlueAvg
     Retain the dilated image for use later in the pipeline (for example, in SaveImages)?:No
@@ -196,22 +196,22 @@ IdentifySecondaryObjects:[module_num:9|svn_version:\'10826\'|variable_revision_n
     Select the measurement to threshold with:None
     Fill holes in identified objects?:Yes
 
-IdentifyPrimaryObjects:[module_num:10|svn_version:\'10826\'|variable_revision_number:8|show_window:False|notes:\x5B\'Identify PBL. Thresholding is done very simple by Otsu x 1.5, but should be optimized to mu + 2 sigma thresholding.\'\x5D]
+IdentifyPrimaryObjects:[module_num:10|svn_version:\'10826\'|variable_revision_number:8|show_window:True|notes:\x5B\'Identify PBL. Thresholding is done very simple by Otsu x 1.5, but should be optimized to mu + 2 sigma thresholding.\'\x5D]
     Select the input image:CorrFITC
     Name the primary objects to be identified:PBL
-    Typical diameter of objects, in pixel units (Min,Max):3,10
+    Typical diameter of objects, in pixel units (Min,Max):2,6
     Discard objects outside the diameter range?:Yes
     Try to merge too small objects with nearby larger objects?:No
     Discard objects touching the border of the image?:Yes
     Select the thresholding method:Otsu Global
-    Threshold correction factor:1.5
-    Lower and upper bounds on threshold:0.005,1.0
+    Threshold correction factor:1.05
+    Lower and upper bounds on threshold:0.000,1.0
     Approximate fraction of image covered by objects?:0.01
     Method to distinguish clumped objects:Intensity
     Method to draw dividing lines between clumped objects:Intensity
     Size of smoothing filter:10
     Suppress local maxima that are closer than this minimum allowed distance:7
-    Speed up by using lower-resolution image to find local maxima?:Yes
+    Speed up by using lower-resolution image to find local maxima?:No
     Name the outline image:PBLOutlines
     Fill holes in identified objects?:Yes
     Automatically calculate size of smoothing filter?:Yes
@@ -221,13 +221,13 @@ IdentifyPrimaryObjects:[module_num:10|svn_version:\'10826\'|variable_revision_nu
     Retain outlines of the identified objects?:Yes
     Automatically calculate the threshold using the Otsu method?:Yes
     Enter Laplacian of Gaussian threshold:0.5
-    Two-class or three-class thresholding?:Two classes
+    Two-class or three-class thresholding?:Three classes
     Minimize the weighted variance or the entropy?:Weighted variance
-    Assign pixels in the middle intensity class to the foreground or the background?:Foreground
+    Assign pixels in the middle intensity class to the foreground or the background?:Background
     Automatically calculate the size of objects for the Laplacian of Gaussian filter?:Yes
     Enter LoG filter diameter:5
-    Handling of objects if excessive number of objects identified:Continue
-    Maximum number of objects:500
+    Handling of objects if excessive number of objects identified:Erase
+    Maximum number of objects:300
     Select the measurement to threshold with:None
 
 RelateObjects:[module_num:11|svn_version:\'10300\'|variable_revision_number:2|show_window:False|notes:\x5B\'How many PBL are on one EC?\'\x5D]
@@ -248,7 +248,6 @@ ConserveMemory:[module_num:13|svn_version:\'9401\'|variable_revision_number:1|sh
     Specify which images?:Images to remove
     Select image to remove:IllumFITC
     Select image to remove:IllumPhako
-    Select image to remove:CorrFITC
     Select image to remove:CorrPhako
 
 OverlayOutlines:[module_num:14|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\'Generate output image\'\x5D]
@@ -268,7 +267,7 @@ OverlayOutlines:[module_num:14|svn_version:\'10672\'|variable_revision_number:2|
 GrayToColor:[module_num:15|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\'Generate output image\'\x5D]
     Select a color scheme:RGB
     Select the input image to be colored red:Leave this black
-    Select the input image to be colored green:FITC
+    Select the input image to be colored green:CorrFITC
     Select the input image to be colored blue:Phako
     Name the output image:ECPBLRaw
     Relative weight for the red image:1
