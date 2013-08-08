@@ -199,7 +199,7 @@ IdentifySecondaryObjects:[module_num:9|svn_version:\'10826\'|variable_revision_n
 IdentifyPrimaryObjects:[module_num:10|svn_version:\'10826\'|variable_revision_number:8|show_window:False|notes:\x5B\'Identify PBL. Thresholding is done very simple by Otsu x 1.5, but should be optimized to mu + 2 sigma thresholding.\'\x5D]
     Select the input image:CorrFITC
     Name the primary objects to be identified:PBL
-    Typical diameter of objects, in pixel units (Min,Max):2,6
+    Typical diameter of objects, in pixel units (Min,Max):2,9
     Discard objects outside the diameter range?:Yes
     Try to merge too small objects with nearby larger objects?:No
     Discard objects touching the border of the image?:Yes
@@ -325,7 +325,28 @@ SaveImages:[module_num:17|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:Yes
     Create subfolders in the output folder?:Yes
 
-FlagImage:[module_num:18|svn_version:\'10300\'|variable_revision_number:2|show_window:False|notes:\x5B\'Flags images in which a low EC number was detected. The adhesion assay requires a confluent EC monolayer. The number of 270 EC is based on initial tests and is 2 Stdevs lower than the mean EC count per 512 x 512 px phase contrast image.\'\x5D]
+SaveImages:[module_num:18|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+    Select the type of image to save:Image
+    Select the image to save:CorrFITC
+    Select the objects to save:None
+    Select the module display window to save:None
+    Select method for constructing file names:From image filename
+    Select image name for file prefix:Phako
+    Enter single file name:OrigBlue
+    Do you want to add a suffix to the image file name?:Yes
+    Text to append to the image name:_PBLOverlay
+    Select file format to use:jpg
+    Output file location:Default Output Folder sub-folder\x7CImages
+    Image bit depth:8
+    Overwrite existing files without warning?:No
+    Select how often to save:Every cycle
+    Rescale the images? :Yes
+    Save as grayscale or color image?:Grayscale
+    Select colormap:gist_heat
+    Store file and path information to the saved image?:Yes
+    Create subfolders in the output folder?:Yes
+
+FlagImage:[module_num:19|svn_version:\'10300\'|variable_revision_number:2|show_window:False|notes:\x5B\'Flags images in which a low EC number was detected. The adhesion assay requires a confluent EC monolayer. The number of 270 EC is based on initial tests and is 2 Stdevs lower than the mean EC count per 512 x 512 px phase contrast image.\'\x5D]
     Hidden:1
     Hidden:1
     Name the flag\'s category:Metadata
@@ -340,7 +361,7 @@ FlagImage:[module_num:18|svn_version:\'10300\'|variable_revision_number:2|show_w
     Flag images based on high values?:No
     Maximum value:1
 
-ExportToSpreadsheet:[module_num:19|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B\'Export data to spreadsheet\'\x5D]
+ExportToSpreadsheet:[module_num:20|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B\'Export data to spreadsheet\'\x5D]
     Select or enter the column delimiter:Comma (",")
     Prepend the output file name to the data file names?:Yes
     Add image metadata columns to your object data file?:Yes
