@@ -196,7 +196,7 @@ IdentifySecondaryObjects:[module_num:9|svn_version:\'10826\'|variable_revision_n
     Select the measurement to threshold with:None
     Fill holes in identified objects?:Yes
 
-IdentifyPrimaryObjects:[module_num:10|svn_version:\'10826\'|variable_revision_number:8|show_window:True|notes:\x5B\'Identify PBL. Thresholding is done very simple by Otsu x 1.5, but should be optimized to mu + 2 sigma thresholding.\'\x5D]
+IdentifyPrimaryObjects:[module_num:10|svn_version:\'10826\'|variable_revision_number:8|show_window:False|notes:\x5B\'Identify PBL. Thresholding is done very simple by Otsu x 1.5, but should be optimized to mu + 2 sigma thresholding.\'\x5D]
     Select the input image:CorrFITC
     Name the primary objects to be identified:PBL
     Typical diameter of objects, in pixel units (Min,Max):2,6
