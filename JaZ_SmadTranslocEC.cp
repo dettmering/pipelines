@@ -2,7 +2,7 @@ CellProfiler Pipeline: http://www.cellprofiler.org
 Version:1
 SVNRevision:11710
 
-LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_window:False|notes:\x5B"Load the images by matching files in the folder against the unique text pattern for each stain\x3A \'Channel 1\' for protein, \'Channel 2\' for the nuclei image. The two images together comprise an image set."\x5D]
+LoadImages:[module_num:1|svn_version:\'Unknown\'|variable_revision_number:11|show_window:False|notes:\x5B"Load the images by matching files in the folder against the unique text pattern for each stain\x3A \'Channel 1\' for protein, \'Channel 2\' for the nuclei image. The two images together comprise an image set."\x5D]
     File type to be loaded:individual images
     File selection method:Text-Exact match
     Number of images in each group?:3
@@ -64,10 +64,10 @@ LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_
     Channel number:1
     Rescale intensities?:Yes
 
-IdentifyPrimaryObjects:[module_num:2|svn_version:\'10826\'|variable_revision_number:8|show_window:False|notes:\x5B\x5D]
+IdentifyPrimaryObjects:[module_num:2|svn_version:\'Unknown\'|variable_revision_number:8|show_window:False|notes:\x5B\x5D]
     Select the input image:OrigDNA
     Name the primary objects to be identified:Nuclei
-    Typical diameter of objects, in pixel units (Min,Max):18,40
+    Typical diameter of objects, in pixel units (Min,Max):25,50
     Discard objects outside the diameter range?:Yes
     Try to merge too small objects with nearby larger objects?:No
     Discard objects touching the border of the image?:Yes
@@ -98,19 +98,11 @@ IdentifyPrimaryObjects:[module_num:2|svn_version:\'10826\'|variable_revision_num
     Maximum number of objects:500
     Select the measurement to threshold with:None
 
-Smooth:[module_num:3|svn_version:\'10465\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
-    Select the input image:OrigPhalloidin
-    Name the output image:SmoothPhalloidin
-    Select smoothing method:Gaussian Filter
-    Calculate artifact diameter automatically?:No
-    Typical artifact diameter, in  pixels:20.0
-    Edge intensity difference:0.1
-
-IdentifySecondaryObjects:[module_num:4|svn_version:\'10826\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+IdentifySecondaryObjects:[module_num:3|svn_version:\'Unknown\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the input objects:Nuclei
     Name the objects to be identified:Cells
     Select the method to identify the secondary objects:Propagation
-    Select the input image:SmoothPhalloidin
+    Select the input image:OrigPhalloidin
     Select the thresholding method:Otsu Global
     Threshold correction factor:1
     Lower and upper bounds on threshold:0.000000,1.000000
@@ -132,14 +124,14 @@ IdentifySecondaryObjects:[module_num:4|svn_version:\'10826\'|variable_revision_n
     Select the measurement to threshold with:None
     Fill holes in identified objects?:Yes
 
-IdentifyTertiaryObjects:[module_num:5|svn_version:\'10300\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
+IdentifyTertiaryObjects:[module_num:4|svn_version:\'Unknown\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
     Select the larger identified objects:Cells
     Select the smaller identified objects:Nuclei
     Name the tertiary objects to be identified:Cytoplasm
     Name the outline image:CytoplasmOutlines
     Retain outlines of the tertiary objects?:No
 
-MeasureObjectIntensity:[module_num:6|svn_version:\'10816\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
+MeasureObjectIntensity:[module_num:5|svn_version:\'Unknown\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
     Hidden:2
     Select an image to measure:OrigPOI
     Select an image to measure:OrigPhalloidin
@@ -147,7 +139,20 @@ MeasureObjectIntensity:[module_num:6|svn_version:\'10816\'|variable_revision_num
     Select objects to measure:Cytoplasm
     Select objects to measure:Nuclei
 
-GrayToColor:[module_num:7|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+MaskImage:[module_num:6|svn_version:\'Unknown\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
+    Select the input image:OrigPOI
+    Name the output image:MaskBackground
+    Use objects or an image as a mask?:Objects
+    Select object for mask:Cells
+    Select image for mask:None
+    Invert the mask?:Yes
+
+MeasureImageIntensity:[module_num:7|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+    Select the image to measure:MaskBackground
+    Measure the intensity only from areas enclosed by objects?:No
+    Select the input objects:None
+
+GrayToColor:[module_num:8|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Select a color scheme:RGB
     Select the input image to be colored red:Leave this black
     Select the input image to be colored green:OrigPOI
@@ -166,7 +171,7 @@ GrayToColor:[module_num:7|svn_version:\'10341\'|variable_revision_number:2|show_
     Relative weight for the brightness image:1
     Select the input image to add to the stacked image:None
 
-OverlayOutlines:[module_num:8|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+OverlayOutlines:[module_num:9|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Display outlines on a blank image?:No
     Select image on which to display outlines:ColorImage
     Name the output image:OrigOverlay
@@ -178,7 +183,7 @@ OverlayOutlines:[module_num:8|svn_version:\'10672\'|variable_revision_number:2|s
     Select outlines to display:CellsOutlines
     Select outline color:Red
 
-SaveImages:[module_num:9|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+SaveImages:[module_num:10|svn_version:\'Unknown\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the type of image to save:Image
     Select the image to save:OrigOverlay
     Select the objects to save:None
@@ -199,7 +204,7 @@ SaveImages:[module_num:9|svn_version:\'10822\'|variable_revision_number:7|show_w
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:No
 
-ExportToSpreadsheet:[module_num:10|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+ExportToSpreadsheet:[module_num:11|svn_version:\'Unknown\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select or enter the column delimiter:Comma (",")
     Prepend the output file name to the data file names?:Yes
     Add image metadata columns to your object data file?:No
