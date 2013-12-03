@@ -139,7 +139,12 @@ MeasureObjectIntensity:[module_num:5|svn_version:\'Unknown\'|variable_revision_n
     Select objects to measure:Cytoplasm
     Select objects to measure:Nuclei
 
-MaskImage:[module_num:6|svn_version:\'Unknown\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
+MeasureObjectSizeShape:[module_num:6|svn_version:\'1\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
+    Select objects to measure:Nuclei
+    Select objects to measure:Cells
+    Calculate the Zernike features?:No
+
+MaskImage:[module_num:7|svn_version:\'Unknown\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
     Select the input image:OrigPOI
     Name the output image:MaskBackground
     Use objects or an image as a mask?:Objects
@@ -147,12 +152,12 @@ MaskImage:[module_num:6|svn_version:\'Unknown\'|variable_revision_number:3|show_
     Select image for mask:None
     Invert the mask?:Yes
 
-MeasureImageIntensity:[module_num:7|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+MeasureImageIntensity:[module_num:8|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Select the image to measure:MaskBackground
     Measure the intensity only from areas enclosed by objects?:No
     Select the input objects:None
 
-GrayToColor:[module_num:8|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+GrayToColor:[module_num:9|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Select a color scheme:RGB
     Select the input image to be colored red:Leave this black
     Select the input image to be colored green:OrigPOI
@@ -171,7 +176,7 @@ GrayToColor:[module_num:8|svn_version:\'Unknown\'|variable_revision_number:2|sho
     Relative weight for the brightness image:1
     Select the input image to add to the stacked image:None
 
-OverlayOutlines:[module_num:9|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+OverlayOutlines:[module_num:10|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Display outlines on a blank image?:No
     Select image on which to display outlines:ColorImage
     Name the output image:OrigOverlay
@@ -183,7 +188,7 @@ OverlayOutlines:[module_num:9|svn_version:\'Unknown\'|variable_revision_number:2
     Select outlines to display:CellsOutlines
     Select outline color:Red
 
-SaveImages:[module_num:10|svn_version:\'Unknown\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+SaveImages:[module_num:11|svn_version:\'Unknown\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the type of image to save:Image
     Select the image to save:OrigOverlay
     Select the objects to save:None
@@ -204,7 +209,7 @@ SaveImages:[module_num:10|svn_version:\'Unknown\'|variable_revision_number:7|sho
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:No
 
-ExportToSpreadsheet:[module_num:11|svn_version:\'Unknown\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+ExportToSpreadsheet:[module_num:12|svn_version:\'Unknown\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select or enter the column delimiter:Comma (",")
     Prepend the output file name to the data file names?:Yes
     Add image metadata columns to your object data file?:No
