@@ -138,7 +138,7 @@ ApplyThreshold:[module_num:7|svn_version:\'6746\'|variable_revision_number:5|sho
 
 IdentifyPrimaryObjects:[module_num:8|svn_version:\'10826\'|variable_revision_number:8|show_window:False|notes:\x5B\'Detects EC from thresholded phase contrast image.\'\x5D]
     Select the input image:ThreshPhako
-    Name the primary objects to be identified:EC
+    Name the primary objects to be identified:EC_Phako
     Typical diameter of objects, in pixel units (Min,Max):5,40
     Discard objects outside the diameter range?:Yes
     Try to merge too small objects with nearby larger objects?:No
@@ -170,9 +170,43 @@ IdentifyPrimaryObjects:[module_num:8|svn_version:\'10826\'|variable_revision_num
     Maximum number of objects:500
     Select the measurement to threshold with:None
 
-IdentifySecondaryObjects:[module_num:9|svn_version:\'10826\'|variable_revision_number:7|show_window:False|notes:\x5B\'Expands borders to find cell borders. Not very precise. Can be used to estimate stuck PBL per EC, but is not really needed.\'\x5D]
+IdentifyPrimaryObjects:[module_num:9|svn_version:\'10826\'|variable_revision_number:8|show_window:False|notes:\x5B\'Detects EC from DAPI object size.\'\x5D]
+    Select the input image:CorrFITC
+    Name the primary objects to be identified:EC
+    Typical diameter of objects, in pixel units (Min,Max):10,40
+    Discard objects outside the diameter range?:Yes
+    Try to merge too small objects with nearby larger objects?:Yes
+    Discard objects touching the border of the image?:Yes
+    Select the thresholding method:Otsu Global
+    Threshold correction factor:1.2
+    Lower and upper bounds on threshold:0.000,1.0
+    Approximate fraction of image covered by objects?:0.01
+    Method to distinguish clumped objects:Intensity
+    Method to draw dividing lines between clumped objects:Intensity
+    Size of smoothing filter:30
+    Suppress local maxima that are closer than this minimum allowed distance:7
+    Speed up by using lower-resolution image to find local maxima?:No
+    Name the outline image:PBLOutlines
+    Fill holes in identified objects?:Yes
+    Automatically calculate size of smoothing filter?:No
+    Automatically calculate minimum allowed distance between local maxima?:Yes
+    Manual threshold:0.0
+    Select binary image:None
+    Retain outlines of the identified objects?:Yes
+    Automatically calculate the threshold using the Otsu method?:Yes
+    Enter Laplacian of Gaussian threshold:0.5
+    Two-class or three-class thresholding?:Three classes
+    Minimize the weighted variance or the entropy?:Weighted variance
+    Assign pixels in the middle intensity class to the foreground or the background?:Foreground
+    Automatically calculate the size of objects for the Laplacian of Gaussian filter?:Yes
+    Enter LoG filter diameter:5
+    Handling of objects if excessive number of objects identified:Erase
+    Maximum number of objects:300
+    Select the measurement to threshold with:None
+
+IdentifySecondaryObjects:[module_num:10|svn_version:\'10826\'|variable_revision_number:7|show_window:False|notes:\x5B\'Expands borders to find cell borders. Not very precise. Can be used to estimate stuck PBL per EC, but is not really needed.\'\x5D]
     Select the input objects:EC
-    Name the objects to be identified:ECexpanded
+    Name the objects to be identified:EC_Phako_expanded
     Select the method to identify the secondary objects:Distance - N
     Select the input image:CorrPhako
     Select the thresholding method:Otsu Global
@@ -196,7 +230,7 @@ IdentifySecondaryObjects:[module_num:9|svn_version:\'10826\'|variable_revision_n
     Select the measurement to threshold with:None
     Fill holes in identified objects?:Yes
 
-IdentifyPrimaryObjects:[module_num:10|svn_version:\'10826\'|variable_revision_number:8|show_window:False|notes:\x5B\'Identify PBL. Thresholding is done very simple by Otsu x 1.5, but should be optimized to mu + 2 sigma thresholding.\'\x5D]
+IdentifyPrimaryObjects:[module_num:11|svn_version:\'10826\'|variable_revision_number:8|show_window:False|notes:\x5B\'Identify PBL. Thresholding is done very simple by Otsu x 1.5, but should be optimized to mu + 2 sigma thresholding.\', \'Detects PBL from DAPI object size.\'\x5D]
     Select the input image:CorrFITC
     Name the primary objects to be identified:PBL
     Typical diameter of objects, in pixel units (Min,Max):2,9
@@ -230,27 +264,33 @@ IdentifyPrimaryObjects:[module_num:10|svn_version:\'10826\'|variable_revision_nu
     Maximum number of objects:300
     Select the measurement to threshold with:None
 
-RelateObjects:[module_num:11|svn_version:\'10300\'|variable_revision_number:2|show_window:False|notes:\x5B\'How many PBL are on one EC?\'\x5D]
+RelateObjects:[module_num:12|svn_version:\'10300\'|variable_revision_number:2|show_window:False|notes:\x5B\'How many PBL are on one EC?\'\x5D]
     Select the input child objects:PBL
-    Select the input parent objects:ECexpanded
+    Select the input parent objects:EC_Phako_expanded
     Calculate distances?:None
     Calculate per-parent means for all child measurements?:No
     Calculate distances to other parents?:No
     Parent name:None
 
-MeasureObjectSizeShape:[module_num:12|svn_version:\'1\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
+MeasureObjectSizeShape:[module_num:13|svn_version:\'1\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
     Select objects to measure:EC
-    Select objects to measure:ECexpanded
+    Select objects to measure:EC_Phako_expanded
     Select objects to measure:PBL
     Calculate the Zernike features?:No
 
-ConserveMemory:[module_num:13|svn_version:\'9401\'|variable_revision_number:1|show_window:False|notes:\x5B\'Removes unneeded images.\'\x5D]
+MeasureObjectIntensity:[module_num:14|svn_version:\'10816\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
+    Hidden:1
+    Select an image to measure:CorrFITC
+    Select objects to measure:EC
+    Select objects to measure:PBL
+
+ConserveMemory:[module_num:15|svn_version:\'9401\'|variable_revision_number:1|show_window:False|notes:\x5B\'Removes unneeded images.\'\x5D]
     Specify which images?:Images to remove
     Select image to remove:IllumFITC
     Select image to remove:IllumPhako
     Select image to remove:CorrPhako
 
-OverlayOutlines:[module_num:14|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\'Generate output image\'\x5D]
+OverlayOutlines:[module_num:16|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\'Generate output image\'\x5D]
     Display outlines on a blank image?:No
     Select image on which to display outlines:Phako
     Name the output image:PhakoOverlay
@@ -264,7 +304,7 @@ OverlayOutlines:[module_num:14|svn_version:\'10672\'|variable_revision_number:2|
     Select outlines to display:ECSecondaryOutlines
     Select outline color:White
 
-GrayToColor:[module_num:15|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\'Generate output image\'\x5D]
+GrayToColor:[module_num:17|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\'Generate output image\'\x5D]
     Select a color scheme:RGB
     Select the input image to be colored red:Leave this black
     Select the input image to be colored green:CorrFITC
@@ -283,7 +323,7 @@ GrayToColor:[module_num:15|svn_version:\'10341\'|variable_revision_number:2|show
     Relative weight for the brightness image:1
     Select the input image to add to the stacked image:None
 
-SaveImages:[module_num:16|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\'Save output image\'\x5D]
+SaveImages:[module_num:18|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\'Save output image\'\x5D]
     Select the type of image to save:Image
     Select the image to save:PhakoOverlay
     Select the objects to save:None
@@ -304,7 +344,7 @@ SaveImages:[module_num:16|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:Yes
     Create subfolders in the output folder?:Yes
 
-SaveImages:[module_num:17|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\'Save output image\'\x5D]
+SaveImages:[module_num:19|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\'Save output image\'\x5D]
     Select the type of image to save:Image
     Select the image to save:ECPBLRaw
     Select the objects to save:None
@@ -325,7 +365,7 @@ SaveImages:[module_num:17|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:Yes
     Create subfolders in the output folder?:Yes
 
-SaveImages:[module_num:18|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+SaveImages:[module_num:20|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the type of image to save:Image
     Select the image to save:CorrFITC
     Select the objects to save:None
@@ -346,7 +386,7 @@ SaveImages:[module_num:18|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:Yes
     Create subfolders in the output folder?:Yes
 
-FlagImage:[module_num:19|svn_version:\'10300\'|variable_revision_number:2|show_window:False|notes:\x5B\'Flags images in which a low EC number was detected. The adhesion assay requires a confluent EC monolayer. The number of 270 EC is based on initial tests and is 2 Stdevs lower than the mean EC count per 512 x 512 px phase contrast image.\'\x5D]
+FlagImage:[module_num:21|svn_version:\'10300\'|variable_revision_number:2|show_window:False|notes:\x5B\'Flags images in which a low EC number was detected. The adhesion assay requires a confluent EC monolayer. The number of 270 EC is based on initial tests and is 2 Stdevs lower than the mean EC count per 512 x 512 px phase contrast image.\'\x5D]
     Hidden:1
     Hidden:1
     Name the flag\'s category:Metadata
@@ -361,7 +401,7 @@ FlagImage:[module_num:19|svn_version:\'10300\'|variable_revision_number:2|show_w
     Flag images based on high values?:No
     Maximum value:1
 
-ExportToSpreadsheet:[module_num:20|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B\'Export data to spreadsheet\'\x5D]
+ExportToSpreadsheet:[module_num:22|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B\'Export data to spreadsheet\'\x5D]
     Select or enter the column delimiter:Comma (",")
     Prepend the output file name to the data file names?:Yes
     Add image metadata columns to your object data file?:Yes
