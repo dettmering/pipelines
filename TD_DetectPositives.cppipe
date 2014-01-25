@@ -664,8 +664,8 @@ SaveImages:[module_num:38|svn_version:\'Unknown\'|variable_revision_number:10|sh
     Save as grayscale or color image?:Grayscale
     Select colormap:gray
     Record the file and path information to the saved image?:No
-    Create subfolders in the output folder?:Yes
-    Base image folder:Elsewhere...\x7C/Users/tdettmer
+    Create subfolders in the output folder?:No
+    Base image folder:Default Output Folder\x7C/Users/tdettmer
 
 SaveImages:[module_num:39|svn_version:\'Unknown\'|variable_revision_number:10|show_window:False|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True]
     Select the type of image to save:Image
@@ -687,8 +687,8 @@ SaveImages:[module_num:39|svn_version:\'Unknown\'|variable_revision_number:10|sh
     Save as grayscale or color image?:Grayscale
     Select colormap:gray
     Record the file and path information to the saved image?:No
-    Create subfolders in the output folder?:Yes
-    Base image folder:Elsewhere...\x7C/Users/tdettmer
+    Create subfolders in the output folder?:No
+    Base image folder:Default Output Folder\x7C/Users/tdettmer
 
 SaveImages:[module_num:40|svn_version:\'Unknown\'|variable_revision_number:10|show_window:False|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True]
     Select the type of image to save:Image
@@ -710,17 +710,17 @@ SaveImages:[module_num:40|svn_version:\'Unknown\'|variable_revision_number:10|sh
     Save as grayscale or color image?:Grayscale
     Select colormap:gray
     Record the file and path information to the saved image?:No
-    Create subfolders in the output folder?:Yes
-    Base image folder:Elsewhere...\x7C/Users/tdettmer
+    Create subfolders in the output folder?:No
+    Base image folder:Default Output Folder\x7C/Users/tdettmer
 
 ExportToSpreadsheet:[module_num:41|svn_version:\'Unknown\'|variable_revision_number:9|show_window:False|notes:\x5B"Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv\'s."\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True]
     Select the column delimiter:,
     Add image metadata columns to your object data file?:Yes
     Limit output to a size that is allowed in Excel?:No
     Select the measurements to export:No
-    Calculate the per-image mean values for object measurements?:Yes
-    Calculate the per-image median values for object measurements?:Yes
-    Calculate the per-image standard deviation values for object measurements?:Yes
+    Calculate the per-image mean values for object measurements?:No
+    Calculate the per-image median values for object measurements?:No
+    Calculate the per-image standard deviation values for object measurements?:No
     Output file location:Default Output Folder\x7C.
     Create a GenePattern GCT file?:No
     Select source of sample row name:Metadata
@@ -736,7 +736,7 @@ ExportToSpreadsheet:[module_num:41|svn_version:\'Unknown\'|variable_revision_num
     Data to export:Nuclei
     Combine these object measurements with those of the previous object?:No
     File name:Result.csv
-    Use the object name for the file name?:No
+    Use the object name for the file name?:Yes
     Data to export:Cells_Green
     Combine these object measurements with those of the previous object?:Yes
     File name:DATA.csv
