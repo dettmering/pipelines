@@ -17,9 +17,9 @@ LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_
     Image count:4
     Text that these images have in common (case-sensitive):3.tif
     Position of this image in each group:d0.tif
-    Extract metadata from where?:Path
-    Regular expression that finds metadata in the file name:None
-    Type the regular expression that finds metadata in the subfolder path:.*\x5B\\\\/\x5D(?P<Date>.*)\x5B\\\\/\x5D(?P<Run>.*)$
+    Extract metadata from where?:File name
+    Regular expression that finds metadata in the file name:(?P<Slice>.*)_(.*)_(.*)
+    Type the regular expression that finds metadata in the subfolder path:(?P<Slice>.*)_(.*)_(.*)
     Channel count:1
     Group the movie frames?:No
     Grouping method:Interleaved
@@ -33,8 +33,8 @@ LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_
     Rescale intensities?:Yes
     Text that these images have in common (case-sensitive):1.tif
     Position of this image in each group:2
-    Extract metadata from where?:Path
-    Regular expression that finds metadata in the file name:^(?P<Plate>.*)_(?P<Well>\x5BA-P\x5D\x5B0-9\x5D{2})_s(?P<Site>\x5B0-9\x5D)
+    Extract metadata from where?:File name
+    Regular expression that finds metadata in the file name:(?P<Slice>.*)_(.*)_(.*)
     Type the regular expression that finds metadata in the subfolder path:.*\x5B\\\\/\x5D(?P<Date>.*)\x5B\\\\/\x5D(?P<Run>.*)$
     Channel count:1
     Group the movie frames?:No
@@ -49,8 +49,8 @@ LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_
     Rescale intensities?:Yes
     Text that these images have in common (case-sensitive):2.tif
     Position of this image in each group:3
-    Extract metadata from where?:Path
-    Regular expression that finds metadata in the file name:^(?P<Plate>.*)_(?P<Well>\x5BA-P\x5D\x5B0-9\x5D{2})_s(?P<Site>\x5B0-9\x5D)
+    Extract metadata from where?:File name
+    Regular expression that finds metadata in the file name:(?P<Slice>.*)_(.*)_(.*)
     Type the regular expression that finds metadata in the subfolder path:.*\x5B\\\\/\x5D(?P<Date>.*)\x5B\\\\/\x5D(?P<Run>.*)$
     Channel count:1
     Group the movie frames?:No
@@ -65,9 +65,9 @@ LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_
     Rescale intensities?:Yes
     Text that these images have in common (case-sensitive):0.tif
     Position of this image in each group:4
-    Extract metadata from where?:Path
-    Regular expression that finds metadata in the file name:^(?P<Plate>.*)_(?P<Well>\x5BA-P\x5D\x5B0-9\x5D{2})_s(?P<Site>\x5B0-9\x5D)
-    Type the regular expression that finds metadata in the subfolder path:.*\x5B\\\\/\x5D(?P<Date>.*)\x5B\\\\/\x5D(?P<Run>.*)$
+    Extract metadata from where?:File name
+    Regular expression that finds metadata in the file name:(?P<Slice>.*)_(.*)_(.*)
+    Type the regular expression that finds metadata in the subfolder path:(?P<Slice>.*)_(.*)_(.*)
     Channel count:1
     Group the movie frames?:No
     Grouping method:Interleaved
@@ -608,7 +608,7 @@ SaveImages:[module_num:35|svn_version:\'10822\'|variable_revision_number:7|show_
     Do you want to add a suffix to the image file name?:Yes
     Text to append to the image name:_MergeRGB
     Select file format to use:jpg
-    Output file location:Default Output Folder sub-folder\x7C\\g<Date>
+    Output file location:Default Output Folder sub-folder\x7CImages
     Image bit depth:8
     Overwrite existing files without warning?:Yes
     Select how often to save:Every cycle
@@ -629,7 +629,7 @@ SaveImages:[module_num:36|svn_version:\'10822\'|variable_revision_number:7|show_
     Do you want to add a suffix to the image file name?:Yes
     Text to append to the image name:_Outlined
     Select file format to use:jpg
-    Output file location:Default Output Folder sub-folder\x7C\\g<Date>
+    Output file location:Default Output Folder sub-folder\x7CImages
     Image bit depth:8
     Overwrite existing files without warning?:Yes
     Select how often to save:Every cycle
@@ -650,7 +650,7 @@ SaveImages:[module_num:37|svn_version:\'10822\'|variable_revision_number:7|show_
     Do you want to add a suffix to the image file name?:No
     Text to append to the image name:Outlined
     Select file format to use:jpg
-    Output file location:Default Output Folder sub-folder\x7C\\g<Date>
+    Output file location:Default Output Folder sub-folder\x7CImages
     Image bit depth:8
     Overwrite existing files without warning?:Yes
     Select how often to save:Every cycle
@@ -663,7 +663,7 @@ SaveImages:[module_num:37|svn_version:\'10822\'|variable_revision_number:7|show_
 ExportToSpreadsheet:[module_num:38|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B"Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv\'s."\x5D]
     Select or enter the column delimiter:,
     Prepend the output file name to the data file names?:Yes
-    Add image metadata columns to your object data file?:No
+    Add image metadata columns to your object data file?:Yes
     Limit output to a size that is allowed in Excel?:No
     Select the columns of measurements to export?:No
     Calculate the per-image mean values for object measurements?:No
