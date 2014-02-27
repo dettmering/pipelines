@@ -177,6 +177,7 @@ MeasureObjectIntensity:[module_num:6|svn_version:\'10816\'|variable_revision_num
 MeasureObjectSizeShape:[module_num:7|svn_version:\'1\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
     Select objects to measure:Nuclei
     Select objects to measure:Cells
+    Select objects to measure:PBL
     Calculate the Zernike features?:No
 
 MaskImage:[module_num:8|svn_version:\'10428\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
