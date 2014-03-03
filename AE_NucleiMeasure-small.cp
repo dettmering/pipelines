@@ -257,9 +257,9 @@ OverlayOutlines:[module_num:13|svn_version:\'10672\'|variable_revision_number:2|
     Select method to determine brightness of outlines:Max of image
     Width of outlines:1
     Select outlines to display:NucOutlines
-    Select outline color:Blue
-    Select outlines to display:CellsOutlines
     Select outline color:White
+    Select outlines to display:CellsOutlines
+    Select outline color:Red
 
 SaveImages:[module_num:14|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B"Save the overlay image as an 8-bit TIF, appending the text \'outline\' to the original filename of the nuclei image."\x5D]
     Select the type of image to save:Image
