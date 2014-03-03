@@ -15,7 +15,7 @@ LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_
     Specify metadata fields to group by:
     Select subfolders to analyze:
     Image count:1
-    Text that these images have in common (case-sensitive):_0004.tif
+    Text that these images have in common (case-sensitive):_0003.tif
     Position of this image in each group:d0.tif
     Extract metadata from where?:None
     Regular expression that finds metadata in the file name:None
@@ -63,22 +63,22 @@ CorrectIlluminationApply:[module_num:3|svn_version:\'10300\'|variable_revision_n
     Select the illumination function:IllumBlue
     Select how the illumination function is applied:Divide
 
-IdentifyPrimaryObjects:[module_num:4|svn_version:\'10826\'|variable_revision_number:8|show_window:False|notes:\x5B\'Identify the nuclei from the nuclear stain image. Some manual adjustment of the smoothing filter size and maxima supression distance is required to optimize segmentation.\'\x5D]
+IdentifyPrimaryObjects:[module_num:4|svn_version:\'10826\'|variable_revision_number:8|show_window:True|notes:\x5B\'Identify the nuclei from the nuclear stain image. Some manual adjustment of the smoothing filter size and maxima supression distance is required to optimize segmentation.\'\x5D]
     Select the input image:CorrBlue
     Name the primary objects to be identified:Nuclei
-    Typical diameter of objects, in pixel units (Min,Max):6,30
+    Typical diameter of objects, in pixel units (Min,Max):9,30
     Discard objects outside the diameter range?:Yes
     Try to merge too small objects with nearby larger objects?:No
     Discard objects touching the border of the image?:Yes
-    Select the thresholding method:Otsu PerObject
+    Select the thresholding method:Otsu Global
     Threshold correction factor:1
-    Lower and upper bounds on threshold:0.008,1.0
+    Lower and upper bounds on threshold:0.0,1.0
     Approximate fraction of image covered by objects?:0.1
     Method to distinguish clumped objects:Shape
     Method to draw dividing lines between clumped objects:Shape
     Size of smoothing filter:10
     Suppress local maxima that are closer than this minimum allowed distance:5
-    Speed up by using lower-resolution image to find local maxima?:Yes
+    Speed up by using lower-resolution image to find local maxima?:No
     Name the outline image:NucOutlines
     Fill holes in identified objects?:Yes
     Automatically calculate size of smoothing filter?:Yes
@@ -88,9 +88,9 @@ IdentifyPrimaryObjects:[module_num:4|svn_version:\'10826\'|variable_revision_num
     Retain outlines of the identified objects?:Yes
     Automatically calculate the threshold using the Otsu method?:Yes
     Enter Laplacian of Gaussian threshold:.5
-    Two-class or three-class thresholding?:Two classes
+    Two-class or three-class thresholding?:Three classes
     Minimize the weighted variance or the entropy?:Weighted variance
-    Assign pixels in the middle intensity class to the foreground or the background?:Foreground
+    Assign pixels in the middle intensity class to the foreground or the background?:Background
     Automatically calculate the size of objects for the Laplacian of Gaussian filter?:Yes
     Enter LoG filter diameter:5
     Handling of objects if excessive number of objects identified:Continue
@@ -106,24 +106,7 @@ MeasureObjectSizeShape:[module_num:6|svn_version:\'1\'|variable_revision_number:
     Select objects to measure:Nuclei
     Calculate the Zernike features?:No
 
-CalculateMath:[module_num:7|svn_version:\'10905\'|variable_revision_number:1|show_window:False|notes:\x5B\'Convert pixels to um2\x3A for 10x objective, 0.8330915 um2/px\'\x5D]
-    Name the output measurement:Area_in_um
-    Operation:None
-    Select the numerator measurement type:Object
-    Select the numerator objects:Nuclei
-    Select the numerator measurement:AreaShape_Area
-    Multiply the above operand by: 0.83309156719717064544650751547303
-    Raise the power of above operand by:1
-    Select the second operand measurement type:Image
-    Select the second operand objects:None
-    Select the second operand measurement:None
-    Multiply the above operand by:1
-    Raise the power of above operand by:1
-    Take log10 of result?:No
-    Multiply the result by:1
-    Raise the power of result by:1
-
-RescaleIntensity:[module_num:8|svn_version:\'6746\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+RescaleIntensity:[module_num:7|svn_version:\'6746\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Select the input image:DAPI
     Name the output image:RescaledBlue
     Select rescaling method:Choose specific values to be reset to a custom range
@@ -141,7 +124,7 @@ RescaleIntensity:[module_num:8|svn_version:\'6746\'|variable_revision_number:2|s
     Enter the divisor:1
     Select the measurement to use as a divisor:None
 
-GrayToColor:[module_num:9|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+GrayToColor:[module_num:8|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Select a color scheme:RGB
     Select the input image to be colored red:RescaledBlue
     Select the input image to be colored green:RescaledBlue
@@ -160,7 +143,7 @@ GrayToColor:[module_num:9|svn_version:\'10341\'|variable_revision_number:2|show_
     Relative weight for the brightness image:1
     Select the input image to add to the stacked image:None
 
-OverlayOutlines:[module_num:10|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+OverlayOutlines:[module_num:9|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Display outlines on a blank image?:No
     Select image on which to display outlines:ColorImage
     Name the output image:OrigOverlay
@@ -170,7 +153,7 @@ OverlayOutlines:[module_num:10|svn_version:\'10672\'|variable_revision_number:2|
     Select outlines to display:NucOutlines
     Select outline color:Red
 
-SaveImages:[module_num:11|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B"Save the overlay image as an 8-bit TIF, appending the text \'outline\' to the original filename of the nuclei image."\x5D]
+SaveImages:[module_num:10|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B"Save the overlay image as an 8-bit TIF, appending the text \'outline\' to the original filename of the nuclei image."\x5D]
     Select the type of image to save:Image
     Select the image to save:OrigOverlay
     Select the objects to save:None
@@ -191,7 +174,7 @@ SaveImages:[module_num:11|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:No
 
-ExportToSpreadsheet:[module_num:12|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B"Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv\'s."\x5D]
+ExportToSpreadsheet:[module_num:11|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B"Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv\'s."\x5D]
     Select or enter the column delimiter:Comma (",")
     Prepend the output file name to the data file names?:Yes
     Add image metadata columns to your object data file?:No
