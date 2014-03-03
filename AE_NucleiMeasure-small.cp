@@ -14,11 +14,11 @@ LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_
     Exclude certain files?:No
     Specify metadata fields to group by:
     Select subfolders to analyze:
-    Image count:1
+    Image count:3
     Text that these images have in common (case-sensitive):_0003.tif
     Position of this image in each group:d0.tif
-    Extract metadata from where?:None
-    Regular expression that finds metadata in the file name:None
+    Extract metadata from where?:File name
+    Regular expression that finds metadata in the file name:(?P<Staining>.*)-(?P<Dose>.*)-(?P<Quality>.*)-_(.*)_(.*)
     Type the regular expression that finds metadata in the subfolder path:None
     Channel count:1
     Group the movie frames?:No
@@ -29,6 +29,38 @@ LoadImages:[module_num:1|svn_version:\'11587\'|variable_revision_number:11|show_
     Name this loaded object:Nuclei
     Retain outlines of loaded objects?:No
     Name the outline image:NucleiOutlines
+    Channel number:1
+    Rescale intensities?:Yes
+    Text that these images have in common (case-sensitive):_0001.tif
+    Position of this image in each group:2
+    Extract metadata from where?:File name
+    Regular expression that finds metadata in the file name:(?P<Staining>.*)-(?P<Dose>.*)-(?P<Quality>.*)-_(.*)_(.*)
+    Type the regular expression that finds metadata in the subfolder path:.*\x5B\\\\/\x5D(?P<Date>.*)\x5B\\\\/\x5D(?P<Run>.*)$
+    Channel count:1
+    Group the movie frames?:No
+    Grouping method:Interleaved
+    Number of channels per group:3
+    Load the input as images or objects?:Images
+    Name this loaded image:Alexa488
+    Name this loaded object:Nuclei
+    Retain outlines of loaded objects?:No
+    Name the outline image:LoadedImageOutlines
+    Channel number:1
+    Rescale intensities?:Yes
+    Text that these images have in common (case-sensitive):_0002.tif
+    Position of this image in each group:3
+    Extract metadata from where?:File name
+    Regular expression that finds metadata in the file name:(?P<Staining>.*)-(?P<Dose>.*)-(?P<Quality>.*)-_(.*)_(.*)
+    Type the regular expression that finds metadata in the subfolder path:.*\x5B\\\\/\x5D(?P<Date>.*)\x5B\\\\/\x5D(?P<Run>.*)$
+    Channel count:1
+    Group the movie frames?:No
+    Grouping method:Interleaved
+    Number of channels per group:3
+    Load the input as images or objects?:Images
+    Name this loaded image:Alexa568
+    Name this loaded object:Nuclei
+    Retain outlines of loaded objects?:No
+    Name the outline image:LoadedImageOutlines
     Channel number:1
     Rescale intensities?:Yes
 
@@ -97,16 +129,52 @@ IdentifyPrimaryObjects:[module_num:4|svn_version:\'10826\'|variable_revision_num
     Maximum number of objects:500
     Select the measurement to threshold with:None
 
-MeasureObjectIntensity:[module_num:5|svn_version:\'10816\'|variable_revision_number:3|show_window:False|notes:\x5B\'Measure intensity features from nuclei, cell and cytoplasm objects against the cropped images.\'\x5D]
+IdentifySecondaryObjects:[module_num:5|svn_version:\'10826\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+    Select the input objects:Nuclei
+    Name the objects to be identified:Cells
+    Select the method to identify the secondary objects:Watershed - Gradient
+    Select the input image:Alexa568
+    Select the thresholding method:Otsu Adaptive
+    Threshold correction factor:1
+    Lower and upper bounds on threshold:0.000000,1.000000
+    Approximate fraction of image covered by objects?:0.01
+    Number of pixels by which to expand the primary objects:10
+    Regularization factor:0.05
+    Name the outline image:CellsOutlines
+    Manual threshold:0.0
+    Select binary image:None
+    Retain outlines of the identified secondary objects?:Yes
+    Two-class or three-class thresholding?:Three classes
+    Minimize the weighted variance or the entropy?:Weighted variance
+    Assign pixels in the middle intensity class to the foreground or the background?:Foreground
+    Discard secondary objects that touch the edge of the image?:No
+    Discard the associated primary objects?:No
+    Name the new primary objects:FilteredNuclei
+    Retain outlines of the new primary objects?:No
+    Name the new primary object outlines:FilteredNucleiOutlines
+    Select the measurement to threshold with:None
+    Fill holes in identified objects?:Yes
+
+IdentifyTertiaryObjects:[module_num:6|svn_version:\'10300\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
+    Select the larger identified objects:Cells
+    Select the smaller identified objects:Nuclei
+    Name the tertiary objects to be identified:Cytoplasm
+    Name the outline image:CytoplasmOutlines
+    Retain outlines of the tertiary objects?:Yes
+
+MeasureObjectIntensity:[module_num:7|svn_version:\'10816\'|variable_revision_number:3|show_window:False|notes:\x5B\'Measure intensity features from nuclei, cell and cytoplasm objects against the cropped images.\'\x5D]
     Hidden:1
     Select an image to measure:CorrBlue
     Select objects to measure:Nuclei
+    Select objects to measure:Cells
+    Select objects to measure:Cytoplasm
 
-MeasureObjectSizeShape:[module_num:6|svn_version:\'1\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
+MeasureObjectSizeShape:[module_num:8|svn_version:\'1\'|variable_revision_number:1|show_window:False|notes:\x5B\x5D]
     Select objects to measure:Nuclei
+    Select objects to measure:Cells
     Calculate the Zernike features?:No
 
-RescaleIntensity:[module_num:7|svn_version:\'6746\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+RescaleIntensity:[module_num:9|svn_version:\'6746\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Select the input image:DAPI
     Name the output image:RescaledBlue
     Select rescaling method:Choose specific values to be reset to a custom range
@@ -124,10 +192,46 @@ RescaleIntensity:[module_num:7|svn_version:\'6746\'|variable_revision_number:2|s
     Enter the divisor:1
     Select the measurement to use as a divisor:None
 
-GrayToColor:[module_num:8|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+RescaleIntensity:[module_num:10|svn_version:\'6746\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+    Select the input image:Alexa488
+    Name the output image:RescaledGreen
+    Select rescaling method:Choose specific values to be reset to a custom range
+    How do you want to calculate the minimum intensity?:Custom
+    How do you want to calculate the maximum intensity?:Custom
+    Enter the lower limit for the intensity range for the input image:0
+    Enter the upper limit for the intensity range for the input image:1
+    Enter the intensity range for the input image:0.0,1
+    Enter the desired intensity range for the final, rescaled image:0.0,16
+    Select method for rescaling pixels below the lower limit:Set to zero
+    Enter custom value for pixels below lower limit:1
+    Select method for rescaling pixels above the upper limit:Set to one
+    Enter custom value for pixels below upper limit:1
+    Select image to match in maximum intensity:None
+    Enter the divisor:1
+    Select the measurement to use as a divisor:None
+
+RescaleIntensity:[module_num:11|svn_version:\'6746\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+    Select the input image:Alexa568
+    Name the output image:RescaledRed
+    Select rescaling method:Choose specific values to be reset to a custom range
+    How do you want to calculate the minimum intensity?:Custom
+    How do you want to calculate the maximum intensity?:Custom
+    Enter the lower limit for the intensity range for the input image:0
+    Enter the upper limit for the intensity range for the input image:1
+    Enter the intensity range for the input image:0.0,1
+    Enter the desired intensity range for the final, rescaled image:0.0,16
+    Select method for rescaling pixels below the lower limit:Set to zero
+    Enter custom value for pixels below lower limit:1
+    Select method for rescaling pixels above the upper limit:Set to one
+    Enter custom value for pixels below upper limit:1
+    Select image to match in maximum intensity:None
+    Enter the divisor:1
+    Select the measurement to use as a divisor:None
+
+GrayToColor:[module_num:12|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Select a color scheme:RGB
-    Select the input image to be colored red:RescaledBlue
-    Select the input image to be colored green:RescaledBlue
+    Select the input image to be colored red:RescaledRed
+    Select the input image to be colored green:RescaledGreen
     Select the input image to be colored blue:RescaledBlue
     Name the output image:ColorImage
     Relative weight for the red image:1
@@ -143,7 +247,7 @@ GrayToColor:[module_num:8|svn_version:\'10341\'|variable_revision_number:2|show_
     Relative weight for the brightness image:1
     Select the input image to add to the stacked image:None
 
-OverlayOutlines:[module_num:9|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+OverlayOutlines:[module_num:13|svn_version:\'10672\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Display outlines on a blank image?:No
     Select image on which to display outlines:ColorImage
     Name the output image:OrigOverlay
@@ -151,9 +255,11 @@ OverlayOutlines:[module_num:9|svn_version:\'10672\'|variable_revision_number:2|s
     Select method to determine brightness of outlines:Max of image
     Width of outlines:1
     Select outlines to display:NucOutlines
-    Select outline color:Red
+    Select outline color:Blue
+    Select outlines to display:CellsOutlines
+    Select outline color:White
 
-SaveImages:[module_num:10|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B"Save the overlay image as an 8-bit TIF, appending the text \'outline\' to the original filename of the nuclei image."\x5D]
+SaveImages:[module_num:14|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B"Save the overlay image as an 8-bit TIF, appending the text \'outline\' to the original filename of the nuclei image."\x5D]
     Select the type of image to save:Image
     Select the image to save:OrigOverlay
     Select the objects to save:None
@@ -174,10 +280,10 @@ SaveImages:[module_num:10|svn_version:\'10822\'|variable_revision_number:7|show_
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:No
 
-ExportToSpreadsheet:[module_num:11|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B"Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv\'s."\x5D]
+ExportToSpreadsheet:[module_num:15|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B"Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv\'s."\x5D]
     Select or enter the column delimiter:Comma (",")
     Prepend the output file name to the data file names?:Yes
-    Add image metadata columns to your object data file?:No
+    Add image metadata columns to your object data file?:Yes
     Limit output to a size that is allowed in Excel?:No
     Select the columns of measurements to export?:No
     Calculate the per-image mean values for object measurements?:Yes
@@ -188,13 +294,9 @@ ExportToSpreadsheet:[module_num:11|svn_version:\'10880\'|variable_revision_numbe
     Select source of sample row name:Metadata
     Select the image to use as the identifier:None
     Select the metadata to use as the identifier:None
-    Export all measurements, using default file names?:No
+    Export all measurements, using default file names?:Yes
     Press button to select measurements to export:None\x7CNone
     Data to export:Image
     Combine these object measurements with those of the previous object?:No
     File name:Image.csv
     Use the object name for the file name?:Yes
-    Data to export:Nuclei
-    Combine these object measurements with those of the previous object?:No
-    File name:Nuclei.csv
-    Use the object name for the file name?:No
