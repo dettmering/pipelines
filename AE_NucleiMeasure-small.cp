@@ -163,8 +163,10 @@ IdentifyTertiaryObjects:[module_num:6|svn_version:\'10300\'|variable_revision_nu
     Retain outlines of the tertiary objects?:Yes
 
 MeasureObjectIntensity:[module_num:7|svn_version:\'10816\'|variable_revision_number:3|show_window:False|notes:\x5B\'Measure intensity features from nuclei, cell and cytoplasm objects against the cropped images.\'\x5D]
-    Hidden:1
+    Hidden:3
     Select an image to measure:CorrBlue
+    Select an image to measure:Alexa488
+    Select an image to measure:Alexa568
     Select objects to measure:Nuclei
     Select objects to measure:Cells
     Select objects to measure:Cytoplasm
